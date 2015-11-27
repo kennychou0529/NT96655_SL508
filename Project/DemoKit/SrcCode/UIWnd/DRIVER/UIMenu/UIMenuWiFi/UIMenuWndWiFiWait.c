@@ -128,7 +128,7 @@ INT32 UIMenuWndWiFiWait_OnBackgroundDone(VControl *pCtrl, UINT32 paramNum, UINT3
     switch(event)
     {
     case NVTEVT_BKW_WIFI_ON:
-        if(UI_GetData(FL_WIFI_LINK)==WIFI_LINK_OK)
+        if(UI_GetData(FL_WIFI_LINK) == WIFI_LINK_OK)
         {
             //change to wifi mode,would close wait wnd
             #if CARDV_ON_MEDIA_BOX_DEMO
@@ -140,11 +140,12 @@ INT32 UIMenuWndWiFiWait_OnBackgroundDone(VControl *pCtrl, UINT32 paramNum, UINT3
         else
         {
             Ux_CloseWindow(pCtrl,0);
-            #if (WIFI_AP_FUNC==ENABLE)
+            #if (WIFI_AP_FUNC == ENABLE)
             Ux_OpenWindow(&UIMenuWndWiFiModuleLinkCtrl,0);//show link fail
             #endif
         }
         break;
+		
     default:
         break;
     }

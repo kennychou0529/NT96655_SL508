@@ -1396,22 +1396,17 @@ INT32 UIFlowWndMovie_OnTimer(VControl *pCtrl, UINT32 paramNum, UINT32 *paramArra
     case NVTEVT_05SEC_TIMER:
         #if(AUTO_WIFI==ENABLE)
         {
-        	debug_msg("-------autoWifi = %d-------\r\n",autoWifi);
-			debug_msg("-------NVTEVT_BKW_WIFI_ON 1-------\r\n");
             if(!autoWifi)
             {
                 //if(GPIOMap_AccDet()==TRUE)
-       			debug_msg("-------NVTEVT_BKW_WIFI_ON 2-------\r\n");
                 Ux_OpenWindow(&UIMenuWndWiFiWaitCtrl, 0);
                 BKG_PostEvent(NVTEVT_BKW_WIFI_ON);
-				debug_msg("-------NVTEVT_BKW_WIFI_ON 3-------\r\n");
                 autoWifi = TRUE;
             }
 	     	else if(gbOpenWifiFunc==TRUE)
             {
-            	debug_msg("-------NVTEVT_BKW_WIFI_ON 4-------\r\n");
                 gbOpenWifiFunc = FALSE;     
-		  		gbACCDetEn=TRUE;		
+		  		//gbACCDetEn=TRUE;		
                 Ux_OpenWindow(&UIMenuWndWiFiWaitCtrl, 0);
                 BKG_PostEvent(NVTEVT_BKW_WIFI_ON);
             }		 	

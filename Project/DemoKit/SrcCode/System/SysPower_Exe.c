@@ -534,9 +534,10 @@ void Power_StopUSBCharge(void)
 
 #define HALF_AN_day  (50*60*3)//43200//(60*60*12)
 #define ACC_TIME_RANG   (80)
+
 void System_DetACC()
 {
-   BOOL uiAccStatus;
+   static BOOL uiAccStatus = FALSE;
    static BOOL bAccCountFlag=FALSE;   
    static UINT32 uiKeyScanAccOffCnt;
    static UINT32 uiKeyScanAccOnCnt;
@@ -545,136 +546,152 @@ void System_DetACC()
    static BOOL bFirstPowerOn=TRUE;
    static BOOL bNeedToChangModeFlag=TRUE;
 
-   uiAccStatus=GPIOMap_AccDet();
-   if(gbACCDetEn=FALSE)
-   	return;
+   //uiAccStatus = GPIOMap_AccDet();
+   uiAccStatus = TRUE;
+   
+   if(gbACCDetEn = FALSE)
+   {
+   		return;
+   }
 
-   if(uiAccStatusLast!=uiAccStatus)
+	/* acc status change */
+   if(uiAccStatusLast != uiAccStatus)
    {
        debug_msg("ACC Det %s...uiKeyScanAccOnCnt:%d..uiKeyScanAccOffCnt:%d...%d...\r\n",(uiAccStatus==TRUE)?"ON":"OFF",uiKeyScanAccOnCnt,uiKeyScanAccOffCnt,rtc_getPWROnSource());				   	   
-	if(uiAccStatus==TRUE)
-	{
-		bAccCountFlag=FALSE; 
-		uiKeyScanAccOnCnt++;
-		uiKeyScanAccOffCnt=0;
-		
-		if(uiKeyScanAccOnCnt>ACC_TIME_RANG)
-		{
-			uiKeyScanAccOnCnt=0;
-			uiAccStatusLast=uiAccStatus;  			
-	              //debug_msg("ACC Plug In..%d..%d..%d\r\n",System_GetState(SYS_STATE_CURRMODE),System_GetState(SYS_STATE_NEXTSUBMODE),System_GetState(SYS_STATE_CURRSUBMODE)); 	
-			UI_SetData(FL_MOVIE_MOTION_DET, FALSE);					  			
-#if 1 				  
-			if(UI_GetData(FL_WIFI_LINK)==WIFI_LINK_NG)
-			{
-			       if(GPIOMap_GetWifiPower()==FALSE)
-			       {
-						GPIOMap_SetWifiPower(TRUE);
-			       }
-				if (System_GetState(SYS_STATE_CURRMODE)==PRIMARY_MODE_MOVIE)
-				{
-					switch(gMovData.State)	
-					{
-						case MOV_ST_REC:
-						case MOV_ST_REC|MOV_ST_ZOOM:
-						FlowMovie_StopRec();	
-						break;
 
-						default:
-							break;
-					}
-				}				   
-				//if (System_GetState(SYS_STATE_CURRMODE)==PRIMARY_MODE_MOVIE)
-				//{
+	   /* ACC Plug In */
+	   if(uiAccStatus == TRUE)
+	   {
+	   		bAccCountFlag=FALSE;
+			uiKeyScanAccOnCnt++;
+			uiKeyScanAccOffCnt=0;
+		
+			if(uiKeyScanAccOnCnt > ACC_TIME_RANG)
+			{
+				debug_msg("ACC Plug In....\r\n");
+				uiKeyScanAccOnCnt=0;
+				uiAccStatusLast = uiAccStatus;  			
+	              //debug_msg("ACC Plug In..%d..%d..%d\r\n",System_GetState(SYS_STATE_CURRMODE),System_GetState(SYS_STATE_NEXTSUBMODE),System_GetState(SYS_STATE_CURRSUBMODE)); 	
+			    UI_SetData(FL_MOVIE_MOTION_DET, FALSE);					  			
+                #if 1 				  
+				if(UI_GetData(FL_WIFI_LINK) == WIFI_LINK_NG)
+				{
+			    	if(GPIOMap_GetWifiPower() == FALSE)
+			        {
+						GPIOMap_SetWifiPower(TRUE);
+						debug_msg("System_DetACC---GPIOMap_SetWifiPower---TRUE\r\n");
+			        }
+					
+					if (System_GetState(SYS_STATE_CURRMODE) == PRIMARY_MODE_MOVIE)
+					{
+						switch(gMovData.State)	
+						{
+							case MOV_ST_REC:
+							case MOV_ST_REC|MOV_ST_ZOOM:
+								FlowMovie_StopRec();	
+								break;
+
+							default:
+								break;
+						}
+					}	
+					
+					//if (System_GetState(SYS_STATE_CURRMODE)==PRIMARY_MODE_MOVIE)
+					//{
 	                		//Ux_OpenWindow(&UIMenuWndWiFiWaitCtrl, 0);
                 			//BKG_PostEvent(NVTEVT_BKW_WIFI_ON);
-				//}
-				//else
+					//}
+					//else
 
-					gbOpenWifiFunc=TRUE;
-					gbACCDetEn=FALSE;
-        				//Ux_SendEvent(&UISetupObjCtrl,NVTEVT_EXE_CHANGEDSCMODE,1,DSCMODE_CHGTO_NEXT);					
+					gbOpenWifiFunc = TRUE;
+					gbACCDetEn = FALSE;
+        			//Ux_SendEvent(&UISetupObjCtrl,NVTEVT_EXE_CHANGEDSCMODE,1,DSCMODE_CHGTO_NEXT);					
              		Ux_SendEvent(0, NVTEVT_SYSTEM_MODE, 1, PRIMARY_MODE_MOVIE);        				
 			}
 			else
 			{
-				if(UIFlowWndWiFiMovie_GetStatus()!=WIFI_MOV_ST_RECORD)
+				if(UIFlowWndWiFiMovie_GetStatus() != WIFI_MOV_ST_RECORD)
 				{
-                			Ux_PostEvent(NVTEVT_KEY_SHUTTER2, 1, NVTEVT_KEY_PRESS); 		
+                	Ux_PostEvent(NVTEVT_KEY_SHUTTER2, 1, NVTEVT_KEY_PRESS); 		
 				}
 			}
-#endif			
+			#endif			
 		}
 	}
 	else
 	{
 		uiKeyScanAccOffCnt++;
 		uiKeyScanAccOnCnt=0;
-		if(uiKeyScanAccOffCnt>ACC_TIME_RANG)
+		
+		if(uiKeyScanAccOffCnt > ACC_TIME_RANG)
 		{	
-	              debug_msg("ACC Plug Out..ready to power off..\r\n");	
+	    	debug_msg("ACC Plug Out..ready to power off..\r\n");	
 			uiKeyScanAccOffCnt=0;	  
-			uiAccStatusLast=uiAccStatus;  						  
-			bAccCountFlag=TRUE;				
+			uiAccStatusLast = uiAccStatus;  						  
+			bAccCountFlag=TRUE;
+			
 			UI_SetData(FL_MOVIE_MOTION_DET, TRUE);
-#if 1		
+			#if 1		
 			if (UIFlowWndWiFiMovie_GetStatus() == WIFI_MOV_ST_RECORD)
 			{
 				FlowWiFiMovie_StopRec();                        
-			}		
+			}
+			
 			if (System_GetState(SYS_STATE_CURRMODE)==PRIMARY_MODE_MOVIE)
 			{
 				switch(gMovData.State)	
 				{
 					case MOV_ST_REC:
 					case MOV_ST_REC|MOV_ST_ZOOM:
-					FlowMovie_StopRec();	
-					break;
+						FlowMovie_StopRec();	
+						break;
 				}
 			}			
-			if((UI_GetData(FL_WIFI_LINK)==WIFI_LINK_OK)&&GPIOMap_GetWifiPower()==TRUE)
+			if((UI_GetData(FL_WIFI_LINK) == WIFI_LINK_OK) && (GPIOMap_GetWifiPower() == TRUE))
 			{
                 Ux_PostEvent(NVTEVT_KEY_WIFIONOFF, 1, NVTEVT_KEY_PRESS);	// ON OFF WIFI 
-				GPIOMap_SetWifiPower(FALSE);                 		
+				GPIOMap_SetWifiPower(FALSE);
+				debug_msg("System_DetACC--GPIOMap_SetWifiPower---FALSE\r\n");
 			}		
-#endif			
+			#endif			
 		}
 
 	}
-   }
-  else
+  }
+  else/* acc status no change */
   {
-  #if 1
-  	if(uiKeyScanAccOffCnt!=0)
+  	#if 1
+  	if(uiKeyScanAccOffCnt != 0)
   	{
-		if(uiAccStatus==TRUE)
+		if(uiAccStatus == TRUE)
 		{
 			if(uiAccStatusLast==TRUE)
 			{
-				uiAccStatusLast=FALSE;
-				uiKeyScanAccOffCnt=0;
+				uiAccStatusLast = FALSE;
+				uiKeyScanAccOffCnt = 0;
 			}
 		}
   	}
-	if(uiKeyScanAccOnCnt!=0)
+	
+	if(uiKeyScanAccOnCnt != 0)
 	{
-		if(uiAccStatus==FALSE)
+		if(uiAccStatus == FALSE)
 		{
-			if(uiAccStatusLast==FALSE)
+			if(uiAccStatusLast == FALSE)
 			{
-				uiAccStatusLast=TRUE;
-				uiKeyScanAccOnCnt=0;
+				uiAccStatusLast = TRUE;
+				uiKeyScanAccOnCnt = 0;
 			}		
 		}
 	}
-#endif	
+   #endif	
   }
-   if(bAccCountFlag==TRUE)
+   if(bAccCountFlag == TRUE)
    {
        uiKeyScanAccOffCnt++;
 	//debug_msg("ACC Power Off...%d\r\n",uiKeyScanAccOffCnt);			
 	   
-	if(uiKeyScanAccOffCnt>HALF_AN_day)
+	if(uiKeyScanAccOffCnt > HALF_AN_day)
 	{
 	       bAccCountFlag=FALSE; 
 		uiAccStatusLast=uiAccStatus;  			   
@@ -811,54 +828,39 @@ void UI_DetLEDStatus(void)
 #elif(_MODEL_DSC_ == _MODEL_SL508_)    
     if (UI_GetData(FL_CardStatus) == CARD_REMOVED)
     {
-       //*********************************
-       //
- 	//    turn on RED_LED when card removed
- 	//    
- 	//*********************************
-    	if(uiRedLedIsToggle==TRUE)
-    	{
-		GxLED_SetCtrl(KEYSCAN_LED_RED,SET_TOGGLE_LED,FALSE);   	
-		if(GxLED_IsLEDOn(KEYSCAN_LED_RED)==FALSE)
-		{
-			GxLED_SetCtrl(KEYSCAN_LED_RED,TURNON_LED,TRUE);   	
-		}		
-	}
-	else
-	{
-		if(GxLED_IsLEDOn(KEYSCAN_LED_RED)==FALSE)
-		{
-			GxLED_SetCtrl(KEYSCAN_LED_RED,TURNON_LED,TRUE);   	
-		}
-	}
+      	/* SET_TOGGLE_LED when card removed */
+    	GxLED_SetCtrl(KEYSCAN_LED_RED,SET_TOGGLE_LED,TRUE);
 		
     }
     else
     {
-              //*********************************              
-	 	//    turn on GREEN_LED when recording
-	 	//    turn off GREEN_LED when not recording
-	 	//*********************************
-	 	if(UI_GetData(FL_WIFI_LINK)==WIFI_LINK_OK)
+           /*          
+	 	   		turn on GREEN_LED && turn off RED_LED when recording
+	 	   		turn off GREEN_LED && RED_LED when not recording
+	 	   	*/
+	 	
+	 	if(UI_GetData(FL_WIFI_LINK) == WIFI_LINK_OK)
 	 	{
-			if(UIFlowWndWiFiMovie_GetStatus()==WIFI_MOV_ST_RECORD)
+			if(UIFlowWndWiFiMovie_GetStatus() == WIFI_MOV_ST_RECORD)
 			{
-				if(GxLED_IsLEDOn(KEYSCAN_LED_GREEN)==FALSE)
+				if(GxLED_IsLEDOn(KEYSCAN_LED_GREEN) == FALSE)
 				{
-					GxLED_SetCtrl(KEYSCAN_LED_GREEN,TURNON_LED,TRUE);   	
-				}		
-				if(GxLED_IsLEDOn(KEYSCAN_LED_RED)==TRUE)
+					GxLED_SetCtrl(KEYSCAN_LED_GREEN,TURNON_LED,TRUE);  
+				}
+				
+				if(GxLED_IsLEDOn(KEYSCAN_LED_RED) == TRUE)
 				{
-					GxLED_SetCtrl(KEYSCAN_LED_RED,TURNON_LED,FALSE);   	
+					GxLED_SetCtrl(KEYSCAN_LED_RED,TURNON_LED,FALSE); 
 				}				
 			}		
 			else
 			{
-				if(GxLED_IsLEDOn(KEYSCAN_LED_GREEN)==TRUE)
+				if(GxLED_IsLEDOn(KEYSCAN_LED_GREEN) == TRUE)
 				{
 					GxLED_SetCtrl(KEYSCAN_LED_GREEN,TURNON_LED,FALSE);   	
-				}					
-				if(GxLED_IsLEDOn(KEYSCAN_LED_RED)==FALSE)
+				}	
+				
+				if(GxLED_IsLEDOn(KEYSCAN_LED_RED) == FALSE)
 				{
 					GxLED_SetCtrl(KEYSCAN_LED_RED,TURNON_LED,TRUE);   	
 				}				
@@ -870,21 +872,23 @@ void UI_DetLEDStatus(void)
 			{
 				case MOV_ST_REC:
 				case MOV_ST_REC|MOV_ST_ZOOM:
-					if(GxLED_IsLEDOn(KEYSCAN_LED_GREEN)==FALSE)
+					if(GxLED_IsLEDOn(KEYSCAN_LED_GREEN) == FALSE)
 					{
 						GxLED_SetCtrl(KEYSCAN_LED_GREEN,TURNON_LED,TRUE);   	
-					}		
+					}
+					
 					if(GxLED_IsLEDOn(KEYSCAN_LED_RED)==TRUE)
 					{
 						GxLED_SetCtrl(KEYSCAN_LED_RED,TURNON_LED,FALSE);   	
 					}					
 				break;
+				
 				default:
-					if(GxLED_IsLEDOn(KEYSCAN_LED_GREEN)==TRUE)
+					if(GxLED_IsLEDOn(KEYSCAN_LED_GREEN) == TRUE)
 					{
 						GxLED_SetCtrl(KEYSCAN_LED_GREEN,TURNON_LED,FALSE);   	
 					}					
-					if(GxLED_IsLEDOn(KEYSCAN_LED_RED)==FALSE)
+					if(GxLED_IsLEDOn(KEYSCAN_LED_RED) == FALSE)
 					{
 						GxLED_SetCtrl(KEYSCAN_LED_RED,TURNON_LED,TRUE);   	
 					}

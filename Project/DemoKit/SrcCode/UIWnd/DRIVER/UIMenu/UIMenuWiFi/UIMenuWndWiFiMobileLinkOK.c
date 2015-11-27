@@ -231,6 +231,10 @@ INT32 UIMenuWndWiFiMobileLinkOK_Authorized_OK(VControl *pCtrl, UINT32 paramNum, 
 
 INT32 UIMenuWndWiFiMobileLinkOK_OnExePhotoCapture(VControl *pCtrl, UINT32 paramNum, UINT32 *paramArray)
 {
+	if(IPL_AlgGetUIInfo(IPL_SEL_IMAGEEFFECT) == SEL_IMAGEEFFECT_WDR)
+	{
+		IPL_AlgSetUIInfo(IPL_SEL_IMAGEEFFECT, SEL_IMAGEEFFECT_OFF);
+	}
     return UIFlowWndWiFiPhoto_OnExePhotoCapture(pCtrl, paramNum, paramArray);
 }
 INT32 UIMenuWndWiFiMobileLinkOK_OnUpdateInfo(VControl *pCtrl, UINT32 paramNum, UINT32 *paramArray)

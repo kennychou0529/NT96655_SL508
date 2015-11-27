@@ -802,12 +802,18 @@ INT32 UIFlowWndWiFiMovie_GetStatus(void)
     UINT32 status;
 
 #if(MOVIE_LIVEVIEW==RTSP_LIVEVIEW)
-    if(MediaRec_IsRecording()==TRUE && UI_GetData(FL_WIFI_MOVIE_FMT)==WIFI_RTSP_LIVEVIEW)
+    if(MediaRec_IsRecording()==TRUE && UI_GetData(FL_WIFI_MOVIE_FMT) == WIFI_RTSP_LIVEVIEW)
+    {
         status = WIFI_MOV_ST_LVIEW;
-    else if(MediaRec_IsRecording()==TRUE && UI_GetData(FL_WIFI_MOVIE_FMT)==WIFI_RTSP_REC)
+    }
+    else if(MediaRec_IsRecording()==TRUE && UI_GetData(FL_WIFI_MOVIE_FMT) == WIFI_RTSP_REC)
+    {
         status = WIFI_MOV_ST_RECORD;
+    }
     else
+    {
         status = WIFI_MOV_ST_IDLE;
+    }
 
 #else //((MOVIE_LIVEVIEW==HTTP_LIVEVIEW) ||(MOVIE_LIVEVIEW==DUAL_REC_HTTP_LIVEVIEW))
     if(MediaRec_IsRecording()==TRUE)
