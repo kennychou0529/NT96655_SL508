@@ -1,0 +1,5 @@
+e:/TAIZHI_SL508/SDK_0428_2015_SL508/DrvExt/DrvExt_src/GPS/GPS.c: In function 'GPSRecTsk':
+e:/TAIZHI_SL508/SDK_0428_2015_SL508/DrvExt/DrvExt_src/GPS/GPS.c:176: warning: unused variable 'pSentenceData'
+e:/TAIZHI_SL508/SDK_0428_2015_SL508/DrvExt/DrvExt_src/GPS/GPS.c:174: warning: unused variable 'CheckSentenceType3'
+e:/TAIZHI_SL508/SDK_0428_2015_SL508/DrvExt/DrvExt_src/GPS/GPS.c:173: warning: unused variable 'CheckSentenceType2'
+e:/TAIZHI_SL508/SDK_0428_2015_SL508/DrvExt/DrvExt_src/GPS/GPS.c:173: warning: unused variable 'CheckSentenceType1'
