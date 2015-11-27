@@ -28,6 +28,7 @@
 #else
 #include "SoundData.h"
 #endif
+#include "UIFlowMovieFuncs.h"
 //local debug level: THIS_DBGLVL
 #define THIS_DBGLVL         1 //0=OFF, 1=ERROR, 2=TRACE
 ///////////////////////////////////////////////////////////////////////////////
@@ -484,7 +485,30 @@ void UI_DetPwrKey(void)
 #elif(_MODEL_DSC_ == _MODEL_SL508_)
 	 if(GPSRec_CheckPowerDown()==TRUE)
 	 {
-		Ux_PostEvent(NVTEVT_KEY_POWER_REL, 0);						 
+		//Ux_PostEvent(NVTEVT_KEY_POWER_REL, 0);
+		if (UIFlowWndWiFiMovie_GetStatus() == WIFI_MOV_ST_RECORD)
+		{
+			FlowWiFiMovie_StopRec();                        
+		}
+			
+		if (System_GetState(SYS_STATE_CURRMODE)==PRIMARY_MODE_MOVIE)
+		{
+			switch(gMovData.State)	
+			{
+				case MOV_ST_REC:
+				case MOV_ST_REC|MOV_ST_ZOOM:
+					FlowMovie_StopRec();
+					break;
+			}
+		}
+		
+		if((UI_GetData(FL_WIFI_LINK) == WIFI_LINK_OK) && (GPIOMap_GetWifiPower() == TRUE))
+		{
+        	Ux_PostEvent(NVTEVT_KEY_WIFIONOFF, 1, NVTEVT_KEY_PRESS);	// ON OFF WIFI 
+			GPIOMap_SetWifiPower(FALSE);
+		}
+
+		Ux_PostEvent(NVTEVT_SYSTEM_SHUTDOWN, 1, 0);	
 	 }
 #else     
         GxKey_DetPwrKey();

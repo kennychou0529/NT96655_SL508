@@ -290,7 +290,7 @@
 //G-sensor
 #define GSENSOR_FUNCTION                DISABLE
 //GPS
-#define GPS_FUNCTION                   DISABLE// 
+#define GPS_FUNCTION                   ENABLE// 
 
 //#NT#2013/02/20#Philex Lin -begin
 //#NT# flag for pressing power button longer to startup system or power off directly

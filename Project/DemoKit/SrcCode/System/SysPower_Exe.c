@@ -557,7 +557,7 @@ void System_DetACC()
 	/* acc status change */
    if(uiAccStatusLast != uiAccStatus)
    {
-       debug_msg("ACC Det %s...uiKeyScanAccOnCnt:%d..uiKeyScanAccOffCnt:%d...%d...\r\n",(uiAccStatus==TRUE)?"ON":"OFF",uiKeyScanAccOnCnt,uiKeyScanAccOffCnt,rtc_getPWROnSource());				   	   
+      //debug_msg("ACC Det %s...uiKeyScanAccOnCnt:%d..uiKeyScanAccOffCnt:%d...%d...\r\n",(uiAccStatus==TRUE)?"ON":"OFF",uiKeyScanAccOnCnt,uiKeyScanAccOffCnt,rtc_getPWROnSource());				   	   
 
 	   /* ACC Plug In */
 	   if(uiAccStatus == TRUE)

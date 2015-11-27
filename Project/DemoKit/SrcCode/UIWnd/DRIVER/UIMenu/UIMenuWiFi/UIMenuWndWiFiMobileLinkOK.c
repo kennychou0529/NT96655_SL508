@@ -14,7 +14,7 @@
 #define _UIMENUWNDWIFIMOBILELINKOK_ERROR_MSG        1
 #define _UIMENUWNDWIFIMOBILELINKOK_TRACE_MSG        0
 
-#if (_UIMENUWNDWIFIMOBILELINKOK_ERROR_MSG&(PRJ_DBG_LVL>=PRJ_DBG_LVL_ERR))
+#if (_UIMENUWNDWIFIMOBILELINKOK_ERROR_MSG&(PRJ_DBG_LVL >= PRJ_DBG_LVL_ERR))
 #define UIMenuWndWiFiMobileLinkOKErrMsg(...)            debug_msg ("^R UIMenuWndWiFiMobileLinkOK: "__VA_ARGS__)
 #else
 #define UIMenuWndWiFiMobileLinkOKErrMsg(...)

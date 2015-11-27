@@ -29,7 +29,7 @@
 //char gFWExternalVersion[33]="WIFI.20151117.V0.8";
 //char gFWExternalVersion[33]="WIFI.20151119.V0.9";
 //char gFWExternalVersion[33]="WIFI.20151119.V1.0";
-char gFWExternalVersion[33]="WIFI.20151127.V2.0";
+char gFWExternalVersion[33]="SL508.20151127.V2.0";
 
 char* Prj_GetVersionString()
 {
