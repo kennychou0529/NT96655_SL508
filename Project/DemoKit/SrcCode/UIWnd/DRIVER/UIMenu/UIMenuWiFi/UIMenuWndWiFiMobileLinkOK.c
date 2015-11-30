@@ -789,6 +789,22 @@ INT32 UIMenuWndWiFiMobileLinkOK_Button_Disconnect_OnKeyShutter2(VControl *pCtrl,
 	uiKeyAct = paramArray[0];
     switch(uiKeyAct)
     {
+  		case NVTEVT_KEY_PRESS:
+
+			if(UIFlowWndWiFiMovie_GetStatus() == WIFI_MOV_ST_RECORD)
+			{
+				uiRecAudioSet = UI_GetData(FL_MOVIE_AUDIO);
+				if(uiRecAudioSet == MOVIE_AUDIO_OFF)
+				{
+					Ux_SendEvent(&CustomMovieObjCtrl, NVTEVT_EXE_MOVIE_AUDIO, 1, MOVIE_AUDIO_ON);
+				}
+				else
+				{
+					Ux_SendEvent(&CustomMovieObjCtrl, NVTEVT_EXE_MOVIE_AUDIO, 1, MOVIE_AUDIO_OFF);
+				}
+			}
+			break;
+			
     	case NVTEVT_KEY_CONTINUE:
 			
 			if(UIFlowWndWiFiMovie_GetStatus() == WIFI_MOV_ST_RECORD)
@@ -801,23 +817,6 @@ INT32 UIMenuWndWiFiMobileLinkOK_Button_Disconnect_OnKeyShutter2(VControl *pCtrl,
 			}
 
 			break;
-			
-		case NVTEVT_KEY_PRESS:
-
-			if(UIFlowWndWiFiMovie_GetStatus() == WIFI_MOV_ST_RECORD)
-			{
-				uiRecAudioSet = UI_GetData(FL_MOVIE_AUDIO);
-				if(uiRecAudioSet == MOVIE_AUDIO_OFF)
-				{
-					Ux_SendEvent(&CustomMovieObjCtrl, NVTEVT_EXE_MOVIE_AUDIO, 1, MOVIE_AUDIO_ON);
-					debug_msg("UIMenuWndWiFiMobileLinkOK_Button_Disconnect_OnKeyShutter2--MOVIE_AUDIO_ON\r\n");
-				}
-				else
-				{
-					Ux_SendEvent(&CustomMovieObjCtrl, NVTEVT_EXE_MOVIE_AUDIO, 1, MOVIE_AUDIO_OFF);
-					debug_msg("UIMenuWndWiFiMobileLinkOK_Button_Disconnect_OnKeyShutter2--MOVIE_AUDIO_OFF\r\n");
-				}
-			}
 			
 		defult:
 			break;

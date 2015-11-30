@@ -44,6 +44,9 @@
 #define    TOUCH_TIMER_CNT         2//2X20ms=40ms
 #define    DOUBLECLICK_INTERVAL     500//ms
 
+#define CUSTOME_SHUTTER2_KEY      (1)
+#define CUSTOME_MENU_KEY      (0)
+
 int SX_TIMER_DET_KEY_ID = -1;
 int SX_TIMER_DET_TOUCH_ID = -1;
 int SX_TIMER_DET_PWR_ID = -1;
@@ -87,7 +90,7 @@ static TOUCH_OBJ g_TouchTable[] =
 #endif
 
 
-#if (UI_STYLE==UI_STYLE_DEMO)
+#if (UI_STYLE == UI_STYLE_DEMO)
 static KEY_OBJ g_KeyTable[] =
 {
     //POWER KEY
@@ -171,6 +174,7 @@ static KEY_OBJ g_KeyTable[] =
     {FLGKEY_ZOOMOUT,      KEY_RELEASE,     NVTEVT_KEY_ZOOMOUT,      NVTEVT_KEY_RELEASE,     0},
     {FLGKEY_SHUTTER2,     KEY_PRESS,       NVTEVT_KEY_SHUTTER2,     NVTEVT_KEY_PRESS,     DEMOSOUND_SOUND_KEY_TONE},
     {FLGKEY_SHUTTER2,     KEY_RELEASE,     NVTEVT_KEY_SHUTTER2,     NVTEVT_KEY_RELEASE,     0},
+    {FLGKEY_SHUTTER2,     KEY_CONTINUE,    NVTEVT_KEY_SHUTTER2,     NVTEVT_KEY_CONTINUE,  DEMOSOUND_SOUND_KEY_TONE},
     {FLGKEY_SHUTTER1,     KEY_PRESS,       NVTEVT_KEY_SHUTTER1,     NVTEVT_KEY_PRESS,     DEMOSOUND_SOUND_KEY_TONE},
     {FLGKEY_SHUTTER1,     KEY_RELEASE,     NVTEVT_KEY_SHUTTER1,     NVTEVT_KEY_RELEASE,     0},
 };
@@ -528,7 +532,7 @@ void UI_DetPwrKey(void)
 
 #define KEY_ADC_RANGE        (25)
 
-#define KEY_ADC_MODE         (0+KEY_ADC_RANGE)
+#define KEY_ADC_SHUTTER2         (0+KEY_ADC_RANGE)
 #define KEY_ADC_LOCKFILE         (174)
 
 
@@ -549,15 +553,16 @@ void UI_DetCustomerModeKey(void)
 	UINT32 uiADCValue;
 
 	uiADCValue=adc_readData(1);
-
-	if((uiADCValue>=(KEY_ADC_MODE-KEY_ADC_RANGE))&&(uiADCValue<(KEY_ADC_MODE+KEY_ADC_RANGE)))
+#if CUSTOME_SHUTTER2_KEY
+	if((uiADCValue >= (KEY_ADC_SHUTTER2-KEY_ADC_RANGE)) && (uiADCValue < (KEY_ADC_SHUTTER2+KEY_ADC_RANGE)))
 	{
         // Debounce
         if (uiModeKey == KEYSCAN_CUSTOMER_PRESSED)
         {
             if (uiModeState == KEYSCAN_CUSTOMER_RELEASE_STATE)
             {
-                uiModeKeyPressCount++;				
+                uiModeKeyPressCount++;	
+				debug_err(("Shutter2KeyPressCount : %d....%d\r\n",uiModeKeyPressCount,KEYSCAN_CUSTOMER_COUNT));
                 if (uiModeKeyPressCount > KEYSCAN_CUSTOMER_COUNT)
                 {
                     uiModeState = KEYSCAN_CUSTOMER_PRESS_STATE;
@@ -567,12 +572,12 @@ void UI_DetCustomerModeKey(void)
             if(uiModeState == KEYSCAN_CUSTOMER_PRESS_STATE)
             {
                   //uiKeyCode = FLGKEY_KEY_POWER;
-		     uiModeKeyPressCount = 0;		
-		     uiModeKey    = KEYSCAN_CUSTOMER_UNKNOWN;
-		     uiModeState    = KEYSCAN_CUSTOMER_INIT_STATE;			
-                   UISound_Play(DEMOSOUND_SOUND_KEY_TONE);		
-                   debug_err(("Capture key continuse,WIFI ON or OFF...\r\n"));									   
-                   Ux_PostEvent(NVTEVT_KEY_WIFIONOFF, 1, NVTEVT_KEY_PRESS);	// ON OFF WIFI 
+		     	uiModeKeyPressCount = 0;		
+		     	uiModeKey    = KEYSCAN_CUSTOMER_UNKNOWN;
+		     	uiModeState    = KEYSCAN_CUSTOMER_INIT_STATE;			
+                UISound_Play(DEMOSOUND_SOUND_KEY_TONE);		
+                debug_err(("shutter2 key continuse,rec start or stop...\r\n"));									   
+                Ux_PostEvent(NVTEVT_KEY_SHUTTER2, 1, NVTEVT_KEY_CONTINUE);	// rec start or stop
             }
         }
         else
@@ -592,10 +597,10 @@ void UI_DetCustomerModeKey(void)
 
             if (uiModeKeyPressCount)
             {	   
-                uiModeKeyPressCount = 0;   
-                UISound_Play(DEMOSOUND_SOUND_KEY_TONE);		
-                 debug_err(("Capture key release ..,snape shot...\r\n"));							   
-	          Ux_PostEvent(NVTEVT_KEY_MODE, 1, NVTEVT_KEY_PRESS);	
+                 uiModeKeyPressCount = 0;   
+                 //UISound_Play(DEMOSOUND_SOUND_KEY_TONE);		
+                 debug_err(("shutter2 key continuse release .....\r\n"));							   
+	             //Ux_PostEvent(NVTEVT_KEY_SHUTTER2, 1, NVTEVT_KEY_PRESS);	
             }
         }
         else
@@ -603,7 +608,9 @@ void UI_DetCustomerModeKey(void)
             uiModeKey = KEYSCAN_CUSTOMER_RELEASED;
         }
     }		
+#endif
 
+#if CUSTOME_MENU_KEY      
 	if((uiADCValue>(KEY_ADC_LOCKFILE-KEY_ADC_RANGE))&&(uiADCValue<(KEY_ADC_LOCKFILE+KEY_ADC_RANGE)))
 	{	
         // Debounce
@@ -620,9 +627,9 @@ void UI_DetCustomerModeKey(void)
 
             if(uiDownState == KEYSCAN_CUSTOMER_PRESS_STATE)
             {
-		     uiDownKeyPressCount = 0;		
-		     uiDownKey    = KEYSCAN_CUSTOMER_UNKNOWN;
-		     uiDownState    = KEYSCAN_CUSTOMER_INIT_STATE;			
+		     		uiDownKeyPressCount = 0;		
+		     		uiDownKey    = KEYSCAN_CUSTOMER_UNKNOWN;
+		     		uiDownState    = KEYSCAN_CUSTOMER_INIT_STATE;			
                    UISound_Play(DEMOSOUND_SOUND_KEY_TONE);		
                    debug_err(("Lock key continuse,MENU Key...\r\n"));							   
 		     Ux_PostEvent(NVTEVT_KEY_MENU, 1, NVTEVT_KEY_PRESS);			   	
@@ -656,7 +663,7 @@ void UI_DetCustomerModeKey(void)
             uiDownKey = KEYSCAN_CUSTOMER_RELEASED;
         }
     }	
-	
+#endif
 }
 
 void UI_DetNormalKey(void)
@@ -668,6 +675,7 @@ void UI_DetNormalKey(void)
 	 UI_DetCustomerModeKey();
 #elif(_MODEL_DSC_ == _MODEL_SL508_)    
         GxKey_DetNormalKey();
+		UI_DetCustomerModeKey();
 #endif
         if (keyDetectCount < 4)
         {

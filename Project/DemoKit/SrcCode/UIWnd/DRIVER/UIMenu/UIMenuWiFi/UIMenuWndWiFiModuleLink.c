@@ -329,29 +329,48 @@ INT32 UIMenuWndWiFiModeLink_Tab_RefreshAndWiFiOff_OnKeyDown(VControl *pCtrl, UIN
 
 INT32 UIMenuWndWiFiModeLink_Tab_RefreshAndWiFiOff_OnKeyShutter2(VControl *pCtrl, UINT32 paramNum, UINT32 *paramArray)
 {
-
 	UINT32  uiKeyAct;
+	static UINT32 uiRecAudioSet = 0;
 
-    uiKeyAct = paramArray[0];
+	uiKeyAct = paramArray[0];
     switch(uiKeyAct)
     {
-    	case NVTEVT_KEY_PRESS:
-			if(UIFlowWndWiFiMovie_GetStatus()==WIFI_MOV_ST_RECORD)
-			{	
+
+		case NVTEVT_KEY_PRESS:
+
+			if(UIFlowWndWiFiMovie_GetStatus() == WIFI_MOV_ST_RECORD)
+			{
+				uiRecAudioSet = UI_GetData(FL_MOVIE_AUDIO);
+				if(uiRecAudioSet == MOVIE_AUDIO_OFF)
+				{
+					Ux_SendEvent(&CustomMovieObjCtrl, NVTEVT_EXE_MOVIE_AUDIO, 1, MOVIE_AUDIO_ON);
+				}
+				else
+				{
+					Ux_SendEvent(&CustomMovieObjCtrl, NVTEVT_EXE_MOVIE_AUDIO, 1, MOVIE_AUDIO_OFF);
+				}
+			}
+
+			break;
+			
+    	case NVTEVT_KEY_CONTINUE:
+			
+			if(UIFlowWndWiFiMovie_GetStatus() == WIFI_MOV_ST_RECORD)
+			{
 	    		UIFlowWndWiFiMovie_OnExeKeyShutter2(FALSE);
 			}
 			else
 			{
-	   		 	UIFlowWndWiFiMovie_OnExeKeyShutter2(TRUE);
+	    		UIFlowWndWiFiMovie_OnExeKeyShutter2(TRUE);
 			}
-			break;
 
+			break;
+						
 		defult:
 			break;
     }
-    return NVTEVT_CONSUME;		
+    return NVTEVT_CONSUME;			
 }
-
 INT32 UIMenuWndWiFiModeLink_Tab_RefreshAndWiFiOff_OnGsensorTrig(VControl *pCtrl, UINT32 paramNum, UINT32 *paramArray)
 {
 	if(UIFlowWndWiFiMovie_GetStatus()==WIFI_MOV_ST_RECORD)
