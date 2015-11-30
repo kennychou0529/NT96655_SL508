@@ -547,6 +547,7 @@ void System_DetACC()
    static BOOL bNeedToChangModeFlag=TRUE;
 
    //uiAccStatus = GPIOMap_AccDet();
+   //GPIOMap_AccDet();
    uiAccStatus = TRUE;
    
    if(gbACCDetEn = FALSE)
@@ -723,7 +724,7 @@ void UI_DetLEDStatus(void)
 {
     static UINT32 uiRedLedIsToggle=FALSE;
 
-    debug_msg("card:%d, wifi link:%d, record status:%d, wifi power:%d\r\n",UI_GetData(FL_CardStatus),UI_GetData(FL_WIFI_LINK),UIFlowWndWiFiMovie_GetStatus(),GPIOMap_GetWifiPower());	
+    //debug_msg("card:%d, wifi link:%d, record status:%d, wifi power:%d\r\n",UI_GetData(FL_CardStatus),UI_GetData(FL_WIFI_LINK),UIFlowWndWiFiMovie_GetStatus(),GPIOMap_GetWifiPower());	
 #if(_MODEL_DSC_ == _MODEL_DEMO1_)   	
     if (UI_GetData(FL_CardStatus) == CARD_REMOVED)
     {

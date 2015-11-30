@@ -1,5 +1,5 @@
 MODELEXT_SL508_Data/Release/ObjectCode/DxCfg.o: \
- e:/TAIZHI_SL508/SDK_0428_2015_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxCfg.c \
+ e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxCfg.c \
  ../../../../Include/Drv/ModelExt/DrvExt.h \
  ../../../../Include/Common/Type.h ../../../../Include/Common/StdCMac.h \
  ../../../../Include/Common/Platform.h \

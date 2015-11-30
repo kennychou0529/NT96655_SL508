@@ -124,9 +124,9 @@
 
 //..............................................................................
 // Date-Time Config
-#define DEF_YEAR                        2013
-#define DEF_MONTH                       1
-#define DEF_DAY                         1
+#define DEF_YEAR                        2015
+#define DEF_MONTH                       6
+#define DEF_DAY                         6
 #define MIN_YEAR                        2000
 #define MAX_YEAR                        2050
 

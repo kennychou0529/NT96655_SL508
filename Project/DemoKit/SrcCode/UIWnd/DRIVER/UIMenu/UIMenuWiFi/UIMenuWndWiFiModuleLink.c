@@ -329,14 +329,26 @@ INT32 UIMenuWndWiFiModeLink_Tab_RefreshAndWiFiOff_OnKeyDown(VControl *pCtrl, UIN
 
 INT32 UIMenuWndWiFiModeLink_Tab_RefreshAndWiFiOff_OnKeyShutter2(VControl *pCtrl, UINT32 paramNum, UINT32 *paramArray)
 {
-	if(UIFlowWndWiFiMovie_GetStatus()==WIFI_MOV_ST_RECORD)
-	{
-	    UIFlowWndWiFiMovie_OnExeKeyShutter2(FALSE);
-	}
-	else
-	{
-	    UIFlowWndWiFiMovie_OnExeKeyShutter2(TRUE);
-	}		
+
+	UINT32  uiKeyAct;
+
+    uiKeyAct = paramArray[0];
+    switch(uiKeyAct)
+    {
+    	case NVTEVT_KEY_PRESS:
+			if(UIFlowWndWiFiMovie_GetStatus()==WIFI_MOV_ST_RECORD)
+			{	
+	    		UIFlowWndWiFiMovie_OnExeKeyShutter2(FALSE);
+			}
+			else
+			{
+	   		 	UIFlowWndWiFiMovie_OnExeKeyShutter2(TRUE);
+			}
+			break;
+
+		defult:
+			break;
+    }
     return NVTEVT_CONSUME;		
 }
 

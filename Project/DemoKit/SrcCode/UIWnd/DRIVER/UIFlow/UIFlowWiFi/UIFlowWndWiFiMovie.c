@@ -272,10 +272,8 @@ INT32 UIFlowWndWiFiMovie_OnExeKeyShutter2(BOOL StartOrStop)
     UINT32 uiNotifyAPPStatus = 0;
     UINT32 result = WIFIAPP_RET_OK;
     UINT32 curStatus = 0;
-
-    startRec=StartOrStop;
-
-
+	
+    startRec = StartOrStop;
     if (System_GetState(SYS_STATE_CURRMODE) != PRIMARY_MODE_MOVIE)
     {
         WifiCmd_Done(WIFIFLAG_RECORD_DONE,WIFIAPP_RET_STATE_ERR);
@@ -284,14 +282,13 @@ INT32 UIFlowWndWiFiMovie_OnExeKeyShutter2(BOOL StartOrStop)
     }
 
     curStatus = UIFlowWndWiFiMovie_GetStatus();
-
     if(startRec)
     {
         if (curStatus == WIFI_MOV_ST_LVIEW)
         {
             UINT32 MaxTime = UIFlowWiFiMovie_GetMaxRecTime();
 
-            if((MaxTime<=2) && (SysGetFlag(FL_MOVIE_CYCLIC_REC) == MOVIE_CYCLICREC_OFF))
+            if((MaxTime <= 2) && (SysGetFlag(FL_MOVIE_CYCLIC_REC) == MOVIE_CYCLICREC_OFF))
             {
                 result = WIFIAPP_RET_STORAGE_FULL;
                 UIFlowWndWiFiMovieErrMsg("recTime<2 sec\r\n");
@@ -326,13 +323,18 @@ INT32 UIFlowWndWiFiMovie_OnExeKeyShutter2(BOOL StartOrStop)
         if ((curStatus == WIFI_MOV_ST_RECORD) && ((recordTime >= 1) || (SysGetFlag(FL_MOVIE_TIMELAPSE_REC) != MOVIE_TIMELAPSEREC_OFF)))
         {
             if(UxCtrl_IsShow(&UIMenuWndWiFiModeLink_PanelCtrl))
-            UxCtrl_SetShow(&UIMenuWndWiFiModeLink_PanelCtrl,FALSE);    
+            {
+            	UxCtrl_SetShow(&UIMenuWndWiFiModeLink_PanelCtrl,FALSE); 
+            }
             if(UxCtrl_IsShow(&UIMenuWndWiFiMobileLinkOK_PanelCtrl))
-            UxCtrl_SetShow(&UIMenuWndWiFiMobileLinkOK_PanelCtrl,FALSE);        
-		if(g_bgsensor==TRUE)
-		{
-			g_bgsensor = FALSE;     
-		}				
+            {
+             	UxCtrl_SetShow(&UIMenuWndWiFiMobileLinkOK_PanelCtrl,FALSE);  
+            }
+			
+			if(g_bgsensor==TRUE)
+			{
+				g_bgsensor = FALSE;     
+			}				
             WifiApp_SendCmd(WIFIAPP_CMD_NOTIFY_STATUS, WIFIAPP_RET_RECORD_STOPPED);             
 			
             FlowWiFiMovie_StopRec();

@@ -1,7 +1,7 @@
 MODELEXT_SL508_Data/Release/ObjectCode/DxOutput_LED.o: \
- e:/TAIZHI_SL508/SDK_0428_2015_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxOutput_LED.c \
- e:/TAIZHI_SL508/SDK_0428_2015_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxCfg.h \
- e:/TAIZHI_SL508/SDK_0428_2015_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h \
+ e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxOutput_LED.c \
+ e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxCfg.h \
+ e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h \
  ../../../../Include/Common/Type.h ../../../../Include/Common/StdCMac.h \
  ../../../../Include/Common/Platform.h \
  ../../../../Include/Common/Kernel/mIType.h \
@@ -72,9 +72,9 @@ MODELEXT_SL508_Data/Release/ObjectCode/DxOutput_LED.o: \
  ../../../../Include/../ThirdParty/eCos/Include/cyg/libc/stdlib/abs.inl \
  ../../../../Include/../ThirdParty/eCos/Include/cyg/libc/stdlib/div.inl
 
-e:/TAIZHI_SL508/SDK_0428_2015_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxCfg.h:
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxCfg.h:
 
-e:/TAIZHI_SL508/SDK_0428_2015_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:
 
 ../../../../Include/Common/Type.h:
 

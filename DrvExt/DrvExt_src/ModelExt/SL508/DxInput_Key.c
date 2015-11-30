@@ -272,6 +272,7 @@ void DrvKey_Init(void)
 UINT32 DrvKey_DetNormalKey(void)
 {
     UINT32 uiKeyCode = 0;
+	
 #if (IRRX_KEY==ENABLE)
     static UINT32 uiIrRxKey = 0;
 #endif
@@ -297,7 +298,9 @@ UINT32 DrvKey_DetNormalKey(void)
 	*/
     if (VolDet_GetKey1Level() == VOLDET_KEY_LVL_SHUTTER2)
     {
+    	
         uiKeyCode |= FLGKEY_SHUTTER2;
+		debug_msg("--DrvKey_DetNormalKey--FLGKEY_SHUTTER2\r\n");
     }
 #endif
 #if (GPIO_KEY == ENABLE)

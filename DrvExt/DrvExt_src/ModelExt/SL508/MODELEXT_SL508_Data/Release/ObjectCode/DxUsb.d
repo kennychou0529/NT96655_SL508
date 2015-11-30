@@ -1,5 +1,5 @@
 MODELEXT_SL508_Data/Release/ObjectCode/DxUsb.o: \
- e:/TAIZHI_SL508/SDK_0428_2015_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxUsb.c \
+ e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxUsb.c \
  ../../../../Include/DrvExt/Enum/UsbDevDef.h \
  ../../../../Include/Drv/Driver_Sys/usb.h \
  ../../../../Include/Common/Type.h ../../../../Include/Common/StdCMac.h \

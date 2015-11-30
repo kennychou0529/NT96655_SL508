@@ -1,5 +1,5 @@
 MODELEXT_SL508_Data/Release/ObjectCode/IOCfg.o: \
- e:/TAIZHI_SL508/SDK_0428_2015_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.c \
+ e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.c \
  ../../../../Include/Common/Type.h ../../../../Include/Common/StdCMac.h \
  ../../../../Include/Common/Platform.h \
  ../../../../Include/Common/Kernel/mIType.h \
@@ -17,7 +17,7 @@ MODELEXT_SL508_Data/Release/ObjectCode/IOCfg.o: \
  ../../../../Include/Drv/Dx/Dx.h ../../../../Include/Drv/Dx/DxType.h \
  ../../../../Include/Drv/ModelExt/DxDisplay.h \
  ../../../../Include/Common/Debug/debug.h \
- e:/TAIZHI_SL508/SDK_0428_2015_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h \
+ e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h \
  ../../../../Include/DrvExt/ModelExt/IOInit.h \
  ../../../../Include/Drv/Driver_Sys/pad.h \
  ../../../../Include/Drv/Driver_Sys/top.h \
@@ -123,7 +123,7 @@ MODELEXT_SL508_Data/Release/ObjectCode/IOCfg.o: \
 
 ../../../../Include/Common/Debug/debug.h:
 
-e:/TAIZHI_SL508/SDK_0428_2015_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:
 
 ../../../../Include/DrvExt/ModelExt/IOInit.h:
 

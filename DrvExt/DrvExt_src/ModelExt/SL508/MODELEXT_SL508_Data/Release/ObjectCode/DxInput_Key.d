@@ -1,7 +1,7 @@
 MODELEXT_SL508_Data/Release/ObjectCode/DxInput_Key.o: \
- e:/TAIZHI_SL508/SDK_0428_2015_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxInput_Key.c \
- e:/TAIZHI_SL508/SDK_0428_2015_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxCfg.h \
- e:/TAIZHI_SL508/SDK_0428_2015_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h \
+ e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxInput_Key.c \
+ e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxCfg.h \
+ e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h \
  ../../../../Include/Common/Type.h ../../../../Include/Common/StdCMac.h \
  ../../../../Include/Common/Platform.h \
  ../../../../Include/Common/Kernel/mIType.h \
@@ -19,7 +19,7 @@ MODELEXT_SL508_Data/Release/ObjectCode/DxInput_Key.o: \
  ../../../../Include/DrvExt/Enum/KeyDef.h \
  ../../../../Include/Drv/Driver_Sys/Rtc.h \
  ../../../../Include/DrvExt/IrRx/IrRx.h \
- e:/TAIZHI_SL508/SDK_0428_2015_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IrRxParser.h \
+ e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IrRxParser.h \
  ../../../../Include/Common/Debug/DebugModule.h \
  ../../../../Include/Common/OS/SysKer.h \
  ../../../../Include/Common/Kernel/Kernel.h \
@@ -76,9 +76,9 @@ MODELEXT_SL508_Data/Release/ObjectCode/DxInput_Key.o: \
  ../../../../Include/../ThirdParty/eCos/Include/cyg/libc/stdlib/abs.inl \
  ../../../../Include/../ThirdParty/eCos/Include/cyg/libc/stdlib/div.inl
 
-e:/TAIZHI_SL508/SDK_0428_2015_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxCfg.h:
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxCfg.h:
 
-e:/TAIZHI_SL508/SDK_0428_2015_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:
 
 ../../../../Include/Common/Type.h:
 
@@ -116,7 +116,7 @@ e:/TAIZHI_SL508/SDK_0428_2015_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:
 
 ../../../../Include/DrvExt/IrRx/IrRx.h:
 
-e:/TAIZHI_SL508/SDK_0428_2015_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IrRxParser.h:
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IrRxParser.h:
 
 ../../../../Include/Common/Debug/DebugModule.h:
 

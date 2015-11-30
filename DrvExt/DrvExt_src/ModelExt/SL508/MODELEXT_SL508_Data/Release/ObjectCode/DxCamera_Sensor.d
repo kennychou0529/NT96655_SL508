@@ -1,5 +1,5 @@
 MODELEXT_SL508_Data/Release/ObjectCode/DxCamera_Sensor.o: \
- e:/TAIZHI_SL508/SDK_0428_2015_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxCamera_Sensor.c \
+ e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxCamera_Sensor.c \
  ../../../../Include/Drv/Sensor/Sensor.h \
  ../../../../Include/Common/Type.h ../../../../Include/Common/StdCMac.h \
  ../../../../Include/Common/Platform.h \
@@ -14,7 +14,7 @@ MODELEXT_SL508_Data/Release/ObjectCode/DxCamera_Sensor.o: \
  ../../../../Include/Drv/Sensor/sensor.h \
  ../../../../Include/Drv/Driver_Sys/sif.h \
  ../../../../Include/Drv/Driver_Sys/pll.h \
- e:/TAIZHI_SL508/SDK_0428_2015_SL508/DrvExt/DrvExt_src/ModelExt/SL508/iocfg.h \
+ e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/iocfg.h \
  ../../../../Include/DrvExt/ModelExt/IOInit.h \
  ../../../../Include/Drv/Driver_Sys/pad.h \
  ../../../../Include/Drv/Driver_Sys/gpio.h \
@@ -111,7 +111,7 @@ MODELEXT_SL508_Data/Release/ObjectCode/DxCamera_Sensor.o: \
 
 ../../../../Include/Drv/Driver_Sys/pll.h:
 
-e:/TAIZHI_SL508/SDK_0428_2015_SL508/DrvExt/DrvExt_src/ModelExt/SL508/iocfg.h:
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/iocfg.h:
 
 ../../../../Include/DrvExt/ModelExt/IOInit.h:
 
