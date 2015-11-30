@@ -762,7 +762,7 @@ INT32 UIFlowWndMovie_OnOpen(VControl *pCtrl, UINT32 paramNum, UINT32 *paramArray
     UIFlowWndMovie_SetFdProc();
     UIFlowWndMovie_ClrFDRect();
     #endif
-    UIFlowwndDeleteFWFile();	
+    //UIFlowwndDeleteFWFile();	
     SxTimer_SetFuncActive(SX_TIMER_DET_GSENSOR_ID,FALSE);	
 
     if(gbNeed2RestrartRecord==TRUE)
@@ -1413,7 +1413,8 @@ INT32 UIFlowWndMovie_OnTimer(VControl *pCtrl, UINT32 paramNum, UINT32 *paramArra
         }
         #endif
         // Motion Detect function
-        if (SysGetFlag(FL_MOVIE_MOTION_DET) == MOVIE_MOTIONDET_ON)
+        //if (SysGetFlag(FL_MOVIE_MOTION_DET) == MOVIE_MOTIONDET_ON)
+        if(0)
         {
             static UINT32  uiMotionDetGo = 0;
             static UINT32  uiMotionDetStop = 0;
@@ -1469,15 +1470,15 @@ INT32 UIFlowWndMovie_OnTimer(VControl *pCtrl, UINT32 paramNum, UINT32 *paramArra
     case NVTEVT_1SEC_TIMER:
 #if (_MODEL_DSC_ == _MODEL_SL508_)		
 	 counter++;
-	 if(counter==5)
+	 if(counter == 5)
 	 {
 	       UserUpgradeMCUFW();
 	 }
-	 else if(counter>6)
+	 else if(counter > 6)
 	 {
 	 	FlowMovie_OnTimerUpdateMcu();
 	 }	 
-	 if(counter>7)
+	 if(counter > 7)
 	 {
 	     if(gbNeedToUpdateMcuFW==TRUE)
 	     {

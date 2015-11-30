@@ -112,6 +112,7 @@ INT32 UIFlowWndWiFiMovie_OnTimer(VControl *pCtrl, UINT32 paramNum, UINT32 *param
     switch(uiEvent)
     {
     case NVTEVT_05SEC_TIMER:
+		break;
         // Motion Detect function
         if (SysGetFlag(FL_MOVIE_MOTION_DET) == MOVIE_MOTIONDET_ON)
         {
