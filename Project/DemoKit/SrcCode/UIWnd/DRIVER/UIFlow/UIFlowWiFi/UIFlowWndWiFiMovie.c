@@ -222,6 +222,7 @@ INT32 UIFlowWndWiFiMovie_OnExeMovieRec(VControl *pCtrl, UINT32 paramNum, UINT32 
                 }
                 else
                 {
+                	
                     FlowWiFiMovie_StopRec();
                     FlowWiFiMovie_StartRec(WIFI_RTSP_REC);
                 }

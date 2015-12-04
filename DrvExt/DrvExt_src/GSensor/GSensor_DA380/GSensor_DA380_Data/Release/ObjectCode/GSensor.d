@@ -1,5 +1,5 @@
 GSensor_DA380_Data/Release/ObjectCode/GSensor.o: \
- e:/GUPAI_WIFI/SDK_0428_2015_GUPAI/DrvExt/DrvExt_src/GSensor/GSensor_DA380/../GSensor.c \
+ e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/../GSensor.c \
  ../../../../Include/Common/Type.h ../../../../Include/Common/StdCMac.h \
  ../../../../Include/Common/Platform.h \
  ../../../../Include/Common/Kernel/mIType.h \

@@ -28,6 +28,8 @@ MODELEXT_SL508_Data/Release/ObjectCode/IOCfg.o: \
  ../../../../Include/Drv/Driver_Sys/Pll.h \
  ../../../../Include/DrvExt/GSensor/GSensor.h \
  ../../../../Include/Drv/Driver_Sys/i2c.h \
+ e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/Gpio_i2c.h \
+ ../../../../Include/Drv/Driver_Sys/Gpio.h \
  ../../../../Include/Common/Debug/DebugModule.h \
  ../../../../Include/Common/OS/SysKer.h \
  ../../../../Include/Common/Kernel/Kernel.h \
@@ -144,6 +146,10 @@ e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:
 ../../../../Include/DrvExt/GSensor/GSensor.h:
 
 ../../../../Include/Drv/Driver_Sys/i2c.h:
+
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/Gpio_i2c.h:
+
+../../../../Include/Drv/Driver_Sys/Gpio.h:
 
 ../../../../Include/Common/Debug/DebugModule.h:
 

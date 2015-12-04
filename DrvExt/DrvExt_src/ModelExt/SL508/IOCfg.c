@@ -27,6 +27,7 @@
 #include "IOInit.h"
 //#include "Timer.h"
 #include "GSensor.h"
+#include "Gpio_i2c.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 #define __MODULE__          DxDrv
@@ -70,6 +71,8 @@ GPIO_INIT_OBJ uiGPIOMapInitTab[] = {
      {  PWMID_WATCHDOG_PCTL,    GPIO_DIR_OUTPUT,    GPIO_SET_OUTPUT_HI,   PAD_PIN_NOT_EXIST      },
      //{  GPIO_WATCHDOG_EN,       GPIO_DIR_OUTPUT,    GPIO_SET_OUTPUT_HI,   PAD_PIN_NOT_EXIST      },   
     {  GPIO_DC_DET,        GPIO_DIR_INPUT,     PAD_PULLUP,           PAD_DC_DET       },
+    {  GPIO_CK235_CLK,           GPIO_DIR_OUTPUT,     GPIO_SET_OUTPUT_HI,           PAD_CK235_CLK},    
+    {  GPIO_CK235_DAT,           GPIO_DIR_OUTPUT,     GPIO_SET_OUTPUT_HI,           PAD_CK235_DAT}, 
      
 #if 0
      {  GPIO_KEY_ZOOMOUT,       GPIO_DIR_INPUT,     PAD_PULLUP,           PAD_KEY_ZOOMOUT       },
@@ -308,6 +311,16 @@ char* VolDet_GetStatusString2(void)
 #endif
 
 
+void IO_InitEncryption(void)
+{
+    ENDE_DEVICE_OBJ g_ENDECtrlObj;
+
+    g_ENDECtrlObj.ENDECtrl_Pin.uigpio_clk     = GPIO_CK235_CLK;
+    g_ENDECtrlObj.ENDECtrl_Pin.uigpio_data    = GPIO_CK235_DAT;
+
+    InitEnDecry(&g_ENDECtrlObj);
+}
+
 void Dx_InitIO(void)  // Config IO for external device
 {
     IO_InitPinmux(); //initial PINMUX config
@@ -321,6 +334,8 @@ void Dx_InitIO(void)  // Config IO for external device
     pad_setPullUpDown(PAD_PIN_PGPIO28, PAD_NONE);
     pad_setPullUpDown(PAD_PIN_PGPIO29, PAD_NONE);
 #endif
+
+	IO_InitEncryption();
 }
 
 void Dx_UninitIO(void)  // Config IO for external device
@@ -336,7 +351,7 @@ void Dx_UninitIO(void)  // Config IO for external device
 
 void GPIOMap_SetWatchDogStatus(BOOL Flag)
 {
-	if(Flag==TRUE)
+	if(Flag == TRUE)
 		gpio_setPin(PWMID_WATCHDOG_PCTL);
 	else
 		gpio_clearPin(PWMID_WATCHDOG_PCTL);	

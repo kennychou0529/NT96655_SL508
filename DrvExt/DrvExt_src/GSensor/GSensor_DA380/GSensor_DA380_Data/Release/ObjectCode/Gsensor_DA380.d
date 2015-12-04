@@ -1,12 +1,12 @@
 GSensor_DA380_Data/Release/ObjectCode/Gsensor_DA380.o: \
- e:/GUPAI_WIFI/SDK_0428_2015_GUPAI/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c \
+ e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c \
  ../../../../Include/DrvExt/GSensor/GSensor.h \
  ../../../../Include/Drv/Driver_Sys/i2c.h \
  ../../../../Include/Drv/Driver_Sys/Driver.h \
  ../../../../Include/Common/Type.h ../../../../Include/Common/StdCMac.h \
  ../../../../Include/Common/Platform.h \
  ../../../../Include/Common/Kernel/mIType.h \
- e:/GUPAI_WIFI/SDK_0428_2015_GUPAI/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.h \
+ e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.h \
  ../../../../Include/Common/Utility/SwTimer.h \
  ../../../../Include/Common/Debug/Debug.h \
  ../../../../Include/../ThirdParty/eCos/Include/stdarg.h \
@@ -52,7 +52,7 @@ GSensor_DA380_Data/Release/ObjectCode/Gsensor_DA380.o: \
 
 ../../../../Include/Common/Kernel/mIType.h:
 
-e:/GUPAI_WIFI/SDK_0428_2015_GUPAI/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.h:
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.h:
 
 ../../../../Include/Common/Utility/SwTimer.h:
 

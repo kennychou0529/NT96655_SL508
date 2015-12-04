@@ -288,7 +288,7 @@
 // Other Config
 
 //G-sensor
-#define GSENSOR_FUNCTION                DISABLE
+#define GSENSOR_FUNCTION                ENABLE
 //GPS
 #define GPS_FUNCTION                   ENABLE// 
 
@@ -557,5 +557,9 @@
 
 #define     USE_TUTK                    ENABLE
 
+#define ENCRYPTE_NONE   0
+#define CK235_PW01    1
+#define CK235_PW03    2
+#define  _ENCRYPTE_   CK235_PW03
 
 #endif //_PRJCFG_DEMO_H_

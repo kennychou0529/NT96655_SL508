@@ -166,6 +166,7 @@ int NvtMain(int argc, char *argv[])
     //SxCmd_DoCommand("ker dump");
     SxCmd_Close();
 
+	GSensor_ParkingMode();
     debug_msg("Byebye, World!\r\n");
 
     return 1;

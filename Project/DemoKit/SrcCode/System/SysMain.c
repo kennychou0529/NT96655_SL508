@@ -25,7 +25,7 @@
 #endif
 #include "DeviceCtrl.h"
 #include "DxSensor.h"
-
+#include "rtc.h"
 //global debug level: PRJ_DBG_LVL
 #include "PrjCfg.h"
 //local debug level: THIS_DBGLVL
@@ -46,7 +46,6 @@ BOOL bFirstStable = TRUE;
 int SX_TIMER_BURNIN_AUTORUN_ID = -1;
 //int SX_TIMER_DET_RECHARGE_ID = -1;
 //int SX_TIMER_DET_CLOSE_LENS_ID = -1;
-
 
 //////////////////////////////////////
 void DevCtrl_ModeUSBPCC(void)
@@ -376,9 +375,22 @@ void UserMainProc(void)
         #endif
     #endif
     //UserWaitEvent(NVTEVT_SYSTEM_BOOT, &paramNum, paramArray); //(paramNum == 1 && paramArray[0] == 0) //power-on begin
-    Ux_SendEvent(0, NVTEVT_SYSTEM_BOOT, 1, 1);
 #endif
 
+
+#if(_ENCRYPTE_ != ENCRYPTE_NONE)    
+    if(EnDeFunction() == FALSE)
+    {
+    	Ux_SendEvent(0, NVTEVT_SYSTEM_SHUTDOWN, 1, 0); //shutdown start
+    }
+    else
+    {
+    	Ux_SendEvent(0, NVTEVT_SYSTEM_BOOT, 1, 1);
+    }
+#else
+    Ux_SendEvent(0, NVTEVT_SYSTEM_BOOT, 1, 1);	
+#endif
+	
     while(!bUI_Quit)
     {
         Ux_WaitEvent(&evt, &paramNum, paramArray);

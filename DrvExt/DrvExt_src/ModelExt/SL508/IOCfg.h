@@ -368,6 +368,12 @@ extern void     GPIOMap_WakeUpCCDPower(void);
 
 //#NT#2012/07/20#Isiah Chang -end
 
+#define GPIO_CK235_CLK    C_GPIO_11
+#define PAD_CK235_CLK     PAD_PIN_CGPIO11
+
+#define GPIO_CK235_DAT   C_GPIO_10
+#define PAD_CK235_DAT    PAD_PIN_CGPIO10
+
 #endif
 
 //@}

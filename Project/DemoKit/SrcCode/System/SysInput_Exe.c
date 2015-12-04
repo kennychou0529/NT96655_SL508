@@ -490,6 +490,7 @@ void UI_DetPwrKey(void)
 	 if(GPSRec_CheckPowerDown()==TRUE)
 	 {
 		//Ux_PostEvent(NVTEVT_KEY_POWER_REL, 0);
+		debug_msg("UI_DetPwrKey--GPSRec_CheckPowerDown == TRUE\r\n");
 		if (UIFlowWndWiFiMovie_GetStatus() == WIFI_MOV_ST_RECORD)
 		{
 			FlowWiFiMovie_StopRec();                        
@@ -511,7 +512,8 @@ void UI_DetPwrKey(void)
         	Ux_PostEvent(NVTEVT_KEY_WIFIONOFF, 1, NVTEVT_KEY_PRESS);	// ON OFF WIFI 
 			GPIOMap_SetWifiPower(FALSE);
 		}
-
+		
+		//GSensor_ParkingMode();
 		Ux_PostEvent(NVTEVT_SYSTEM_SHUTDOWN, 1, 0);	
 	 }
 #else     

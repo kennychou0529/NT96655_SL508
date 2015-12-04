@@ -183,42 +183,46 @@ void GPSRecTsk(void)
 
     while(1)
     {
-        cLen = NMEA_SENTENCE_SIZE ;
+    	cLen = NMEA_SENTENCE_SIZE ;
 #if(UART_DATA_TYPE==UART_CONNECT_MCU)
-	  Step=0;
+	    Step=0;
         uart2_getChar(RecSentence);
         //debug_msg("Uart2 get char :%x.\r\n",*RecSentence);
 
-	  if(*RecSentence == MCU_START1_BYTE)
-	  {
-		Step=1;	
-	  }
-	  if(Step==1)
-	  {
+	  	if(*RecSentence == MCU_START1_BYTE)
+	  	{
+			Step=1;	
+	  	}
+		
+	  	if(Step==1)
+	  	{
+         	uart2_getChar(RecSentence);	
+        	//debug_msg("Uart2 get char-2- :%x.\r\n",*RecSentence);			  
+		    if(*RecSentence == MCU_START2_BYTE)
+		    {
+			 	Step=2;	
+		  	}			
+	  	}
+		
+	  	if(Step==2)
+	  	{
         	  uart2_getChar(RecSentence);	
-        	  //debug_msg("Uart2 get char-2- :%x.\r\n",*RecSentence);			  
-		  if(*RecSentence == MCU_START2_BYTE)
-		  {
-			Step=2;	
-		  }			
-	  }
-	  if(Step==2)
-	  {
-        	  uart2_getChar(RecSentence);	
-		  if(*RecSentence == MCU_COMMAND_UPDATE_ACK)
-		  {
-        	      //debug_msg("Uart2 get char-3- :%x.\r\n",*RecSentence);			  		  
-			MCUInfo.IsUpdateMcuFW=TRUE;		  
-			Step=0;	
-		  }	
-		  else if(*RecSentence ==MCU_COMMAND_POWEROF)
-		  {
-        	      debug_msg("Uart2 get char-4- :%x.\r\n",*RecSentence);				  
-		  	if(!kchk_flg(FLG_ID_GPS, GPS_FLAG_SHUTDOWN))
-			set_flg(FLG_ID_GPS, GPS_FLAG_SHUTDOWN);
-			Step=0;
-		  }
-	  }
+		  	  if(*RecSentence == MCU_COMMAND_UPDATE_ACK)
+		      {
+        	      debug_msg("Uart2 get char-3- :%x.\r\n",*RecSentence);			  		  
+			      MCUInfo.IsUpdateMcuFW = TRUE;		  
+			      Step=0;	
+		      }	
+		      else if(*RecSentence == MCU_COMMAND_POWEROF)
+		      {
+			      debug_msg("Uart2 get char-4- :%x.\r\n",*RecSentence);				  
+		  	      if(!kchk_flg(FLG_ID_GPS, GPS_FLAG_SHUTDOWN))
+		  	      {
+			          set_flg(FLG_ID_GPS, GPS_FLAG_SHUTDOWN);
+		  	      }
+			      Step=0;
+		      }
+	   }
 #else		
         #if (RECEIVE_FROM_UART2)
         if (uart2_getString(RecSentence, &cLen) == E_PAR)
@@ -302,9 +306,13 @@ BOOL GPSRec_CheckPowerDown(void)
 {
     //debug_msg("GPS_FLAG_SHUTDOWN: 0x%X\r\n",kchk_flg(FLG_ID_GPS, GPS_FLAG_SHUTDOWN));
     if (kchk_flg(FLG_ID_GPS, GPS_FLAG_SHUTDOWN))
+    {
         return TRUE;
+    }
     else
+    {
         return FALSE;
+    }
 
 }
 

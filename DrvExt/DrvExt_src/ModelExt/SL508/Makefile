@@ -35,8 +35,8 @@ SRC = \
     DxPower_Battery.c \
     DxCamera_Sensor.c \
     DxCamera_Flash.c \
-    DxCamera_Lens.c
-    
+    DxCamera_Lens.c \
+    GPIO_I2C.c
 
 ifeq "$(MODELEXT)" "x"
     DxSound_Audio.c \

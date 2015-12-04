@@ -142,7 +142,7 @@ static volatile BOOL g_PreviewStable_Record = FALSE;
 BOOL g_bSpeLockFun = FALSE;
 extern BOOL gbOpenWifiFunc;
 extern BOOL gbACCDetEn;
-BOOL gbNeed2RestrartRecord=TRUE;
+BOOL gbNeed2RestrartRecord = FALSE;
 
 _ALIGNED(4)  GPSDATA gpsdata={0};
 
@@ -763,7 +763,7 @@ INT32 UIFlowWndMovie_OnOpen(VControl *pCtrl, UINT32 paramNum, UINT32 *paramArray
     UIFlowWndMovie_ClrFDRect();
     #endif
     //UIFlowwndDeleteFWFile();	
-    SxTimer_SetFuncActive(SX_TIMER_DET_GSENSOR_ID,FALSE);	
+    SxTimer_SetFuncActive(SX_TIMER_DET_GSENSOR_ID,TRUE);	
 
     if(gbNeed2RestrartRecord==TRUE)
     {

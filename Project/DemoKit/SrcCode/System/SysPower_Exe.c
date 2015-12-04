@@ -905,56 +905,54 @@ void UI_DetLEDStatus(void)
 
 void UI_DetGsensor(void)
 {
-#if 1
     Gsensor_Data GS_Data;
     INT32 gsensor_trig;
     static UINT32 X,Y,Z;
     static UINT32 counter=0;
-    if(counter<5)
+	//debug_msg("UI_DetGsensor ---\r\n");
+    if(counter < 5)
     {
-	GSensor_GetData(&GS_Data);
-	counter++;
+		GSensor_GetData(&GS_Data);
+		counter++;
     }
     else
     {
-        if (System_GetState(SYS_STATE_CURRMODE)==PRIMARY_MODE_MOVIE)
-        {
-        	switch(gMovData.State)	
-        	{
-        	     case MOV_ST_REC:
-		     case MOV_ST_REC|MOV_ST_ZOOM:
-		        if(UI_GetData(FL_GSENSOR)!=GSENSOR_OFF)
-			  {
-				if(GSensor_GetData(&GS_Data)==TRUE)
-		            {
-		                     debug_msg("gsensor trig,post DOWN event..\r\n");
-                        		Ux_PostEvent(NVTEVT_KEY_DOWN, 1,NVTEVT_KEY_PRESS);					
-		            }		
-			  }
-		     break;
-        	}
-        }
-	else if(System_GetState(SYS_STATE_CURRSUBMODE)==SYS_SUBMODE_WIFI)
-	{
-		if(UIFlowWndWiFiMovie_GetStatus()==WIFI_MOV_ST_RECORD)
-		{
-		        if(UI_GetData(FL_GSENSOR)!=GSENSOR_OFF)
-			  {
-				if(GSensor_GetData(&GS_Data)==TRUE)
+       if(UI_GetData(FL_GSENSOR) != GSENSOR_OFF)
+       {
+	   		if(UI_GetData(FL_WIFI_LINK) == WIFI_LINK_OK)
+	   		{
+				if(UIFlowWndWiFiMovie_GetStatus() == WIFI_MOV_ST_RECORD)
+				{
+				    if(GSensor_GetData(&GS_Data)==TRUE)
 		            {
 		                     debug_msg("gsensor trig,post DOWN event..22..\r\n");		            
-                        		Ux_PostEvent(NVTEVT_KEY_DOWN, 1,NVTEVT_KEY_PRESS);					
+                        	 Ux_PostEvent(NVTEVT_KEY_DOWN, 1,NVTEVT_KEY_PRESS);					
 		            }		
-			  }
-		}
-	}
+			     }
+		    }	
+			else
+	   		{
+				switch(gMovData.State)	
+				{
+					case MOV_ST_REC:
+					case MOV_ST_REC|MOV_ST_ZOOM:
+				 		if(GSensor_GetData(&GS_Data)==TRUE)
+		         		{
+		            		debug_msg("gsensor trig,post DOWN event..\r\n");
+                        	Ux_PostEvent(NVTEVT_KEY_DOWN, 1,NVTEVT_KEY_PRESS);					
+		         		}		
+		          		break;
+				 	default:
+				 		break;
+				}
+	   		}
+       	}
     }
-#endif	
 }
 void System_DetWatchDog(void)
 {
 	static BOOL Flag=TRUE;	
-	Flag= ~Flag;	
+	Flag = ~Flag;	
 	GPIOMap_SetWatchDogStatus(Flag);
 }
 

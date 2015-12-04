@@ -315,15 +315,15 @@ INT32 UIMenuWndWiFiModeLink_Tab_RefreshAndWiFiOff_OnKeyMode(VControl *pCtrl, UIN
 
 INT32 UIMenuWndWiFiModeLink_Tab_RefreshAndWiFiOff_OnKeyDown(VControl *pCtrl, UINT32 paramNum, UINT32 *paramArray)
 {
-	if(UIFlowWndWiFiMovie_GetStatus()==WIFI_MOV_ST_RECORD)
-        {
-		if(g_bgsensor==FALSE)
+	if(UIFlowWndWiFiMovie_GetStatus() == WIFI_MOV_ST_RECORD)
+    {
+		if(g_bgsensor == FALSE)
 		{
 			g_bgsensor = TRUE;     
 			MediaRec_SetCrash();	
-    			UxCtrl_SetShow(&UIMenuWndWiFiModeLink_Static_LockCtrl,TRUE);   	
+    		UxCtrl_SetShow(&UIMenuWndWiFiModeLink_Static_LockCtrl,TRUE);   	
 		}	
-        }
+    }
     return NVTEVT_CONSUME;	
 }
 

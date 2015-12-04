@@ -1,5 +1,5 @@
 GPS_Data/Release/ObjectCode/GPS.o: \
- e:/TAIZHI_SL508/SDK_0428_2015_SL508/DrvExt/DrvExt_src/GPS/GPS.c \
+ e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GPS/GPS.c \
  ../../../Include/../ThirdParty/eCos/Include/string.h \
  ../../../Include/../ThirdParty/eCos/Include/pkgconf/isoinfra.h \
  ../../../Include/../ThirdParty/eCos/Include/stddef.h \
