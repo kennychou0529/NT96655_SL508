@@ -65,6 +65,7 @@ void System_DetACC(void);
 void UI_DetLEDStatus(void);
 void UI_DetGsensor(void);
 void System_DetWatchDog(void);
+extern void UIFlowWndMovie_Check_Mcu_Bin(void);
 
 
 #if (AUTOSLEEP_FUNCTION == ENABLE)
@@ -899,6 +900,8 @@ void UI_DetLEDStatus(void)
 		}			
 			
     }
+
+	UIFlowWndMovie_Check_Mcu_Bin();
 #endif
 }
 

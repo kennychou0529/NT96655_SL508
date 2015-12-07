@@ -207,6 +207,7 @@ void GPSRecTsk(void)
 	  	if(Step==2)
 	  	{
         	  uart2_getChar(RecSentence);	
+			  debug_msg("GPSRecTsk---Uart2 get char- :%x.\r\n",*RecSentence);		
 		  	  if(*RecSentence == MCU_COMMAND_UPDATE_ACK)
 		      {
         	      debug_msg("Uart2 get char-3- :%x.\r\n",*RecSentence);			  		  

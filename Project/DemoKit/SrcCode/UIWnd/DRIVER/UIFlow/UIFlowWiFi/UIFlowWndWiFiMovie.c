@@ -108,7 +108,6 @@ INT32 UIFlowWndWiFiMovie_OnTimer(VControl *pCtrl, UINT32 paramNum, UINT32 *param
 {
     UINT32  uiEvent;
     uiEvent = paramNum ? paramArray[0] : 0;
-
     switch(uiEvent)
     {
     case NVTEVT_05SEC_TIMER:

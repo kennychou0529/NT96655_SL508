@@ -1,47 +1,5 @@
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/PinmuxCfg.c:21: warning: "_INTERSTORAGE_NAND_" is not defined
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/PinmuxCfg.c:133: warning: "_LCDTYPE_UT45030A0_HX8379C_" is not defined
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.c:24:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.c:29:
-../../../../Include/DrvExt/GSensor/GSensor.h:82: warning: function declaration isn't a prototype
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.c:314: warning: no previous prototype for 'IO_InitEncryption'
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.c:361: warning: no previous prototype for 'GPIOMap_AccDet'
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxStorage_Card.c:20:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxStorage_Card2.c:20:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxStorage_Nand.c:3:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxDisplay.c:2:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxDisplay_LCD.c:3:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxDisplay_LCD.c:58: warning: "_LCDTYPE_UT45030A0_HX8379C_" is not defined
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxDisplay_TV.c:19:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxDisplay_HDMI.c:19:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxOutput_LED.c:19:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxInput_Key.c:19:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxInput_Key.c:163: warning: 'VolDet_GetKey2Level' defined but not used
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxSound_Audio.c:4:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxCmd.c:19:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IoCfg.h:281: warning: function declaration isn't a prototype
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxPower_Battery.c:2:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxCamera_Sensor.c:18:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/iocfg.h:281: warning: function declaration isn't a prototype
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxCamera_Sensor.c: In function 'DrvSensor_GetTab1st':
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxCamera_Sensor.c:60: warning: implicit declaration of function 'Sensor_GetDrvTab_OV2710'
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxCamera_Sensor.c:60: warning: return makes pointer from integer without a cast
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxCamera_Flash.c:3:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxCamera_Lens.c:2:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/GPIO_I2C.c: In function 'EnDeFunction':
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/GPIO_I2C.c:56: warning: unused variable 'exdata'
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/GPIO_I2C.c: At top level:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/GPIO_I2C.c:41: warning: 'delay' defined but not used
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GPS/GPS.c: In function 'GPSRecTsk':
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GPS/GPS.c:176: warning: unused variable 'pSentenceData'
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GPS/GPS.c:174: warning: unused variable 'CheckSentenceType3'
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GPS/GPS.c:173: warning: unused variable 'CheckSentenceType2'
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GPS/GPS.c:173: warning: unused variable 'CheckSentenceType1'

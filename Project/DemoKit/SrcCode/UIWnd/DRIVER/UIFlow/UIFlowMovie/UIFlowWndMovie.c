@@ -81,6 +81,7 @@ INT32 UIFlowWndMovie_OnACPlug(VControl *, UINT32, UINT32 *);
 INT32 UIFlowWndMovie_OnACUnplug(VControl *, UINT32, UINT32 *);
 INT32 UIFlowWndMovie_OnWifiOnOFF(VControl *, UINT32, UINT32 *);
 INT32 UIFlowWndMovie_GsensorTrig(VControl *, UINT32, UINT32 *);
+void UIFlowWndMovie_Check_Mcu_Bin(void);
 
 EVENT_BEGIN(UIFlowWndMovie)
 EVENT_ITEM(NVTEVT_OPEN_WINDOW,UIFlowWndMovie_OnOpen)
@@ -286,6 +287,7 @@ BOOL UserUpgradeMCUFWDoing()
 
 BOOL UserUpgradeMCUFW()
 {
+	debug_msg("UserUpgradeMCUFW---\r\n");
 	if(UIFlowMovie_CheckUpdateMcu())
 	{
 		UserUpgradeMCUFWRequire();	
@@ -303,6 +305,8 @@ BOOL FlowMovie_OnTimerUpdateMcu()
 	      McuRec_GetMcuInfo(&McuInfo);      	  
 	      if(McuInfo.IsUpdateMcuFW==TRUE)
 	      {
+	      	GxLED_SetCtrl(KEYSCAN_LED_GREEN,TURNON_LED,FALSE);
+	      	GxLED_SetCtrl(KEYSCAN_LED_RED,TURNON_LED,TRUE);
 			debug_msg("-->start to update mcu FW..\r\n");
 			gbNeedToUpdateMcuFW=FALSE;
 			UserUpgradeMCUFWDoing();				
@@ -1390,7 +1394,7 @@ INT32 UIFlowWndMovie_OnTimer(VControl *pCtrl, UINT32 paramNum, UINT32 *paramArra
 #endif	
 	static BOOL autoWifi = FALSE;
     uiEvent = paramNum ? paramArray[0] : 0;
-
+	debug_msg("UIFlowWndMovie_OnTimer---\r\n");
     switch(uiEvent)
     {
     case NVTEVT_05SEC_TIMER:
@@ -1468,7 +1472,7 @@ INT32 UIFlowWndMovie_OnTimer(VControl *pCtrl, UINT32 paramNum, UINT32 *paramArra
         break;
 
     case NVTEVT_1SEC_TIMER:
-#if (_MODEL_DSC_ == _MODEL_SL508_)		
+#if (_MODEL_DSC_ == _MODEL_SL508_)
 	 counter++;
 	 if(counter == 5)
 	 {
@@ -1796,4 +1800,34 @@ INT32 UIFlowWndMovie_PNL_FDFrame_OnRedraw(VControl *pCtrl, UINT32 paramNum, UINT
     #endif
 
     return NVTEVT_CONSUME;
+}
+
+void UIFlowWndMovie_Check_Mcu_Bin(void)
+{
+	#if (_MODEL_DSC_ == _MODEL_SL508_)
+	static UINT32 counter;
+	 counter++;
+	 if(counter == 7)
+	 {
+	       UserUpgradeMCUFW();
+	 }
+	 else if(counter > 8)
+	 {
+	 	FlowMovie_OnTimerUpdateMcu();
+	 }	 
+	 if(counter > 9)
+	 {
+	     if(gbNeedToUpdateMcuFW==TRUE)
+	     {
+	            if (g_PreviewStable_Record == FALSE)
+	            {
+	                if(g_PreviewStable == TRUE)
+	                {
+	                   g_PreviewStable_Record = TRUE;
+	                   Ux_PostEvent(NVTEVT_KEY_SHUTTER2 , 1, NVTEVT_KEY_PRESS);
+	                }
+	            }
+	     }
+	 }		
+#endif
 }
