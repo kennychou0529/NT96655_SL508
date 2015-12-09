@@ -602,7 +602,7 @@ void UI_DetCustomerModeKey(void)
                  uiModeKeyPressCount = 0;   
                  //UISound_Play(DEMOSOUND_SOUND_KEY_TONE);		
                  debug_err(("shutter2 key continuse release .....\r\n"));							   
-	             //Ux_PostEvent(NVTEVT_KEY_SHUTTER2, 1, NVTEVT_KEY_PRESS);	
+	             Ux_PostEvent(NVTEVT_KEY_SHUTTER2, 1, NVTEVT_KEY_PRESS);	
             }
         }
         else

@@ -298,7 +298,7 @@ UINT32 DrvKey_DetNormalKey(void)
 	*/
     if (VolDet_GetKey1Level() == VOLDET_KEY_LVL_SHUTTER2)
     {
-        uiKeyCode |= FLGKEY_SHUTTER2;
+        //uiKeyCode |= FLGKEY_SHUTTER2;
     }
 #endif
 #if (GPIO_KEY == ENABLE)

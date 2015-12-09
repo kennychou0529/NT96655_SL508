@@ -331,22 +331,30 @@ INT32 UIMenuWndWiFiModeLink_Tab_RefreshAndWiFiOff_OnKeyShutter2(VControl *pCtrl,
 {
 	UINT32  uiKeyAct;
 	static UINT32 uiRecAudioSet = 0;
-
+	static UINT8 ucFirst = 1;
 	uiKeyAct = paramArray[0];
+	
     switch(uiKeyAct)
     {
 
 		case NVTEVT_KEY_PRESS:
-
+			if(ucFirst)
+			{
+				ucFirst = 0;
+				break;
+			}
+			
 			if(UIFlowWndWiFiMovie_GetStatus() == WIFI_MOV_ST_RECORD)
 			{
 				uiRecAudioSet = UI_GetData(FL_MOVIE_AUDIO);
 				if(uiRecAudioSet == MOVIE_AUDIO_OFF)
 				{
+					debug_msg("UIMenuWndWiFiModeLink_Tab_RefreshAndWiFiOff_OnKeyShutter2--MOVIE_AUDIO_ON--\r\n");
 					Ux_SendEvent(&CustomMovieObjCtrl, NVTEVT_EXE_MOVIE_AUDIO, 1, MOVIE_AUDIO_ON);
 				}
 				else
 				{
+					debug_msg("UIMenuWndWiFiModeLink_Tab_RefreshAndWiFiOff_OnKeyShutter2--MOVIE_AUDIO_OFF--\r\n");
 					Ux_SendEvent(&CustomMovieObjCtrl, NVTEVT_EXE_MOVIE_AUDIO, 1, MOVIE_AUDIO_OFF);
 				}
 			}

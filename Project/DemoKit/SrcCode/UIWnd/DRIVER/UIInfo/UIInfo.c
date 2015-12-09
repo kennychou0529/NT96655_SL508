@@ -487,7 +487,7 @@ void SysCheckFlag(void)
     SysLimitFlag(FL_MOVIE_DATEIMPRINT,  0,  MOVIE_DATEIMPRINT_ID_MAX,   DEFAULT_MOVIE_DATEIMPRINT);
     SysLimitFlag(FL_MOVIE_HDR,          0,  MOVIE_HDR_ID_MAX,           DEFAULT_MOVIE_HDR);
     SysLimitFlag(FL_SENSOR_ROTATE,      0,  SEN_ROTATE_MAX,             DEFAULT_SENSOR_ROTATE);
-    SysLimitFlag(FL_GSENSOR,      0,  GSENSOR_ID_MAX,             DEFAULT_MOVIE_GSENSOR);
+    SysLimitFlag(FL_GSENSOR,            0,  GSENSOR_ID_MAX,             DEFAULT_MOVIE_GSENSOR);
 	
     // Playback
     SysLimitFlag(FL_PROTECT,            0,  FILE_PROTECT_ID_MAX,    DEFAULT_PROTECT);
@@ -600,6 +600,7 @@ void SysResetFlag(void)
     SysSetFlag(FL_MOVIE_DATEIMPRINT,    DEFAULT_MOVIE_DATEIMPRINT);
     SysSetFlag(FL_SENSOR_ROTATE,        DEFAULT_SENSOR_ROTATE);
     SysSetFlag(FL_MOVIE_HDR,            DEFAULT_MOVIE_HDR);
+	SysSetFlag(FL_GSENSOR,            DEFAULT_MOVIE_GSENSOR);
 
     // Playback
     SysSetFlag(FL_PROTECT,              DEFAULT_PROTECT);

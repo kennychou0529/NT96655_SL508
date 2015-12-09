@@ -226,7 +226,7 @@ BOOL UserUpgradeMCUFWTransmitOneFrame(UINT8 *SourceDat)
 	Cmd_Return[3]=(uiCounter>>8)&0xff;
 	Cmd_Return[4]=uiCounter&0x0ff;
 
-	for(i=0;i<16;i++)
+	for(i=0;i < 16;i++)
 	{
 		Index=uiCounter*16;	
 		Cmd_Return[5+i]=SourceDat[Index+i];

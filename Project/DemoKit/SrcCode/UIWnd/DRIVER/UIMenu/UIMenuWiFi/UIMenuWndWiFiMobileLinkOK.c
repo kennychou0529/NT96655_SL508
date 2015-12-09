@@ -796,13 +796,13 @@ INT32 UIMenuWndWiFiMobileLinkOK_Button_Disconnect_OnKeyShutter2(VControl *pCtrl,
 				uiRecAudioSet = UI_GetData(FL_MOVIE_AUDIO);
 				if(uiRecAudioSet == MOVIE_AUDIO_OFF)
 				{
-					//debug_msg("UIMenuWndWiFiMobileLinkOK_Button_Disconnect_OnKeyShutter2--MOVIE_AUDIO_ON--\r\n");
+					debug_msg("UIMenuWndWiFiMobileLinkOK_Button_Disconnect_OnKeyShutter2--MOVIE_AUDIO_ON--\r\n");
 					WifiApp_SendCmd(WIFIAPP_CMD_NOTIFY_STATUS, WIFIAPP_RET_MIC_ON);
 					Ux_SendEvent(&CustomMovieObjCtrl, NVTEVT_EXE_MOVIE_AUDIO, 1, MOVIE_AUDIO_ON);
 				}
 				else
 				{
-					//debug_msg("UIMenuWndWiFiMobileLinkOK_Button_Disconnect_OnKeyShutter2--WIFIAPP_RET_MIC_OFF--\r\n");
+					debug_msg("UIMenuWndWiFiMobileLinkOK_Button_Disconnect_OnKeyShutter2--WIFIAPP_RET_MIC_OFF--\r\n");
 					WifiApp_SendCmd(WIFIAPP_CMD_NOTIFY_STATUS, WIFIAPP_RET_MIC_OFF);
 					Ux_SendEvent(&CustomMovieObjCtrl, NVTEVT_EXE_MOVIE_AUDIO, 1, MOVIE_AUDIO_OFF);
 				}
