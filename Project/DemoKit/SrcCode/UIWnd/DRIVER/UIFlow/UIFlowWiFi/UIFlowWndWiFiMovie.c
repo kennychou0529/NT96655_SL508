@@ -18,7 +18,6 @@
 #include "MovieInterface.h"
 
 extern BOOL g_bgsensor;
-
 //---------------------UIFlowWndWiFiMovieCtrl Debug Definition -----------------------------
 #define _UIFLOWWNDWIFIMOVIE_ERROR_MSG        1
 #define _UIFLOWWNDWIFIMOVIE_TRACE_MSG        0
@@ -179,6 +178,7 @@ INT32 UIFlowWndWiFiMovie_OnExeMovieRec(VControl *pCtrl, UINT32 paramNum, UINT32 
     UINT32 uiNotifyAPPStatus = 0;
     UINT32 result = WIFIAPP_RET_OK;
     UINT32 curStatus = 0;
+	static UINT8 ucFirst = 1;
     if(paramNum>0)
     {
         startRec=paramArray[0];
@@ -221,7 +221,6 @@ INT32 UIFlowWndWiFiMovie_OnExeMovieRec(VControl *pCtrl, UINT32 paramNum, UINT32 
                 }
                 else
                 {
-                	
                     FlowWiFiMovie_StopRec();
                     FlowWiFiMovie_StartRec(WIFI_RTSP_REC);
                 }
@@ -245,7 +244,7 @@ INT32 UIFlowWndWiFiMovie_OnExeMovieRec(VControl *pCtrl, UINT32 paramNum, UINT32 
 		if(g_bgsensor==TRUE)
 		{
 			g_bgsensor = FALSE;     
-		}				
+		}	
             FlowWiFiMovie_StopRec();
             FlowWiFiMovie_StartRec(WIFI_RTSP_LIVEVIEW);
             // Notify Maximum Record Time
@@ -281,7 +280,7 @@ INT32 UIFlowWndWiFiMovie_OnExeKeyShutter2(BOOL StartOrStop)
         UIFlowWndWiFiMovieErrMsg("not movie mode\r\n");
         return NVTEVT_CONSUME;
     }
-
+	debug_msg("UIFlowWndWiFiMovie_OnExeKeyShutter2---\r\n");
     curStatus = UIFlowWndWiFiMovie_GetStatus();
     if(startRec)
     {
@@ -306,7 +305,7 @@ INT32 UIFlowWndWiFiMovie_OnExeKeyShutter2(BOOL StartOrStop)
               //  }
              //   else
              //   {
-                    WifiApp_SendCmd(WIFIAPP_CMD_NOTIFY_STATUS, WIFIAPP_RET_RECORD_STARTED);             
+                    WifiApp_SendCmd(WIFIAPP_CMD_NOTIFY_STATUS, WIFIAPP_RET_RECORD_STARTED);  
                     FlowWiFiMovie_StopRec();
                     FlowWiFiMovie_StartRec(WIFI_RTSP_REC);
               //  }

@@ -177,7 +177,7 @@ INT32 UIMenuWndWiFiMobileLinkOK_OnOpen(VControl *pCtrl, UINT32 paramNum, UINT32 
     sprintf(buf2,"Mobile APP is connecting DVR...");	
     UxButton_SetItemData(&UIMenuWndWiFiMobileLinkOK_Button_DisconnectCtrl, 0, BTNITM_STRID, Txt_Pointer(buf2));
 
-    if (gUIMenuWndWiFiMotionDetTimerID==NULL_TIMER)
+    if (gUIMenuWndWiFiMotionDetTimerID == NULL_TIMER)
     {
         gUIMenuWndWiFiMotionDetTimerID = GxTimer_StartTimer(TIMER_HALF_SEC, NVTEVT_05SEC_TIMER, CONTINUE);
     }
@@ -797,13 +797,13 @@ INT32 UIMenuWndWiFiMobileLinkOK_Button_Disconnect_OnKeyShutter2(VControl *pCtrl,
 				if(uiRecAudioSet == MOVIE_AUDIO_OFF)
 				{
 					debug_msg("UIMenuWndWiFiMobileLinkOK_Button_Disconnect_OnKeyShutter2--MOVIE_AUDIO_ON--\r\n");
-					WifiApp_SendCmd(WIFIAPP_CMD_NOTIFY_STATUS, WIFIAPP_RET_MIC_ON);
+					//WifiApp_SendCmd(WIFIAPP_CMD_NOTIFY_STATUS, WIFIAPP_RET_MIC_ON);
 					Ux_SendEvent(&CustomMovieObjCtrl, NVTEVT_EXE_MOVIE_AUDIO, 1, MOVIE_AUDIO_ON);
 				}
 				else
 				{
 					debug_msg("UIMenuWndWiFiMobileLinkOK_Button_Disconnect_OnKeyShutter2--WIFIAPP_RET_MIC_OFF--\r\n");
-					WifiApp_SendCmd(WIFIAPP_CMD_NOTIFY_STATUS, WIFIAPP_RET_MIC_OFF);
+					//WifiApp_SendCmd(WIFIAPP_CMD_NOTIFY_STATUS, WIFIAPP_RET_MIC_OFF);
 					Ux_SendEvent(&CustomMovieObjCtrl, NVTEVT_EXE_MOVIE_AUDIO, 1, MOVIE_AUDIO_OFF);
 				}
 			}

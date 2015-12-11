@@ -865,8 +865,8 @@ INT32 System_OnVideoAttach(VControl *pCtrl, UINT32 paramNum, UINT32 *paramArray)
         GxVideo_SetDeviceCtrl(DOUT1, DISPLAY_DEVCTRL_BACKLIGHT, TRUE);
         }
 #else
-        Display_ShowSplash(SPLASH_POWERON);
-        Delay_DelayMs(30); // delay some time to avoid LCD flicker as power on
+        //Display_ShowSplash(SPLASH_POWERON);
+        //Delay_DelayMs(30); // delay some time to avoid LCD flicker as power on
         GxVideo_SetDeviceCtrl(DOUT1, DISPLAY_DEVCTRL_BACKLIGHT, TRUE);
 #endif
         UI_GfxInit();

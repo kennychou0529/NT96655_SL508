@@ -1,47 +1,36 @@
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/PinmuxCfg.c:21: warning: "_INTERSTORAGE_NAND_" is not defined
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/PinmuxCfg.c:133: warning: "_LCDTYPE_UT45030A0_HX8379C_" is not defined
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.c:24:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.c:29:
+In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c:1:
 ../../../../Include/DrvExt/GSensor/GSensor.h:82: warning: function declaration isn't a prototype
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.c:314: warning: no previous prototype for 'IO_InitEncryption'
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.c:361: warning: no previous prototype for 'GPIOMap_AccDet'
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxStorage_Card.c:20:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxStorage_Card2.c:20:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxStorage_Nand.c:3:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxDisplay.c:2:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxDisplay_LCD.c:3:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxDisplay_LCD.c:58: warning: "_LCDTYPE_UT45030A0_HX8379C_" is not defined
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxDisplay_TV.c:19:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxDisplay_HDMI.c:19:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxOutput_LED.c:19:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxInput_Key.c:19:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxInput_Key.c:163: warning: 'VolDet_GetKey2Level' defined but not used
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxSound_Audio.c:4:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxCmd.c:19:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IoCfg.h:281: warning: function declaration isn't a prototype
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxPower_Battery.c:2:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxCamera_Sensor.c:18:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/iocfg.h:281: warning: function declaration isn't a prototype
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxCamera_Sensor.c: In function 'DrvSensor_GetTab1st':
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxCamera_Sensor.c:60: warning: implicit declaration of function 'Sensor_GetDrvTab_OV2710'
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxCamera_Sensor.c:60: warning: return makes pointer from integer without a cast
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxCamera_Flash.c:3:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/DxCamera_Lens.c:2:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/IOCfg.h:281: warning: function declaration isn't a prototype
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/GPIO_I2C.c: In function 'EnDeFunction':
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/GPIO_I2C.c:56: warning: unused variable 'exdata'
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/GPIO_I2C.c: At top level:
-e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/ModelExt/SL508/GPIO_I2C.c:41: warning: 'delay' defined but not used
+In file included from e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c:2:
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.h:51: warning: function declaration isn't a prototype
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c:19: warning: no previous prototype for 'i2c_read_byte_data'
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c:25: warning: no previous prototype for 'i2c_write_byte_data'
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c:31: warning: no previous prototype for 'i2c_read_block_data'
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c:43: warning: no previous prototype for 'mir3da_register_read'
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c:54: warning: no previous prototype for 'mir3da_register_write'
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c:65: warning: no previous prototype for 'mir3da_register_read_continuously'
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c:77: warning: no previous prototype for 'mir3da_register_mask_write'
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c: In function 'mir3da_chip_init':
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c:130: warning: implicit declaration of function 'Delay_DelayMs'
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c: At top level:
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c:187: warning: function declaration isn't a prototype
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c:217: warning: no previous prototype for 'rotate'
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c:287: warning: no previous prototype for 'GSensor_DA380_CrashMode'
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c:292: warning: no previous prototype for 'GSensor_DA380_ClearCrashMode'
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c:297: warning: no previous prototype for 'GSensor_DA380_SetSensitivity'
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c: In function 'GSensor_GetData':
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c:395: warning: unused variable 'updCount'
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c:394: warning: unused variable 'prev_rot'
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c: At top level:
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c:442: warning: function declaration isn't a prototype
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c: In function 'GSensor_ParkingMode':
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c:429: warning: control reaches end of non-void function
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c: In function 'rotate':
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c:248: warning: control reaches end of non-void function
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c: At top level:
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c:8: warning: 'GsXData' defined but not used
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c:8: warning: 'OldGsXData' defined but not used
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c:9: warning: 'GsYData' defined but not used
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c:9: warning: 'OldGsYData' defined but not used
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c:10: warning: 'GsZData' defined but not used
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c:10: warning: 'OldGsZData' defined but not used
+e:/workspace/NT96655_SL508/DrvExt/DrvExt_src/GSensor/GSensor_DA380/Gsensor_DA380.c:250: warning: 'GSensor_DA380_GetAxisMsg' defined but not used

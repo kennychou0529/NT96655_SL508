@@ -1394,7 +1394,6 @@ INT32 UIFlowWndMovie_OnTimer(VControl *pCtrl, UINT32 paramNum, UINT32 *paramArra
 #endif	
 	static BOOL autoWifi = FALSE;
     uiEvent = paramNum ? paramArray[0] : 0;
-	debug_msg("UIFlowWndMovie_OnTimer---\r\n");
     switch(uiEvent)
     {
     case NVTEVT_05SEC_TIMER:
@@ -1582,28 +1581,30 @@ INT32 UIFlowWndMovie_OnWifiOnOFF(VControl *pCtrl, UINT32 paramNum, UINT32 *param
     uiKeyAct = paramArray[0];
     switch(uiKeyAct)
     {
-    case NVTEVT_KEY_PRESS:
-        switch(gMovData.State)
-        {
-          case MOV_ST_REC:
-          case MOV_ST_REC|MOV_ST_ZOOM:
-            // stop recording
-            if (FlowMovie_GetRecCurrTime() >= 1)
-            {
-                FlowMovie_StopRec();
-            }
-	     else
-	     {
-	     	  for(i=0;i<500;i++)
-	     	  {
-			debug_msg("wait movie record more than 1 second..\r\n");
-	     	  }
-		  FlowMovie_StopRec();	  
-	     }	     
-            break;
-        }		
-	Ux_OpenWindow(&UIMenuWndWiFiWaitCtrl, 0);
-	BKG_PostEvent(NVTEVT_BKW_WIFI_ON);    
+		case NVTEVT_KEY_PRESS:
+			switch(gMovData.State)
+			{
+				case MOV_ST_REC:
+				case MOV_ST_REC|MOV_ST_ZOOM:
+					// stop recording
+					if (FlowMovie_GetRecCurrTime() >= 1)
+					{
+						FlowMovie_StopRec();
+					}
+					else
+					{
+						for(i=0;i<500;i++)
+						{
+							debug_msg("wait movie record more than 1 second..\r\n");
+						}
+						FlowMovie_StopRec();	  
+					}
+					
+				break;
+			}	
+			
+			Ux_OpenWindow(&UIMenuWndWiFiWaitCtrl, 0);
+			BKG_PostEvent(NVTEVT_BKW_WIFI_ON);    
      break;
     }
     return NVTEVT_CONSUME;

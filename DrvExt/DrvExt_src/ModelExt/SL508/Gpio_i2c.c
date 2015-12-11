@@ -70,16 +70,12 @@ BOOL EnDeFunction(void)
     RTC_TIME  curTime;
 
     curTime = rtc_getTime();
-    //sprintf(pFileName,"%02d%02d",curTime.s.hour,curTime.s.minute);
-    //srand( (UINT8)time( NULL ) );
     srand( (UINT8)(curTime.s.second) );
 
     #if 1
     for(i=0;i<8;i++)
     {
         randata[i]=1+(UINT8)(100.0*rand()/(RAND_MAX_NUM+1.0));
-        //DEBUG_MSG(("EnDeFunction================================> %x\r\n",randata[i]));
-        DEBUG_MSG(("EnDeFunction================================> %x\r\n",randata[i]));
     }
 	#else
     for(i=0;i<8;i++)
@@ -112,20 +108,10 @@ BOOL EnDeFunction(void)
     tmpdata[6] = f*h;//07
     tmpdata[7] = a-e;//7f
 
-    for(i=0;i<8;i++)
-    {
-        //DEBUG_MSG(("tmpdata================================>Err %x\r\n",randata[i]));
-        DEBUG_MSG(("tmpdata===============%d=================>tmpdata %x\r\n",i, tmpdata[i]));
-    }
     _i2c_write(tmp_dev_addr, tmp_sub_addr,randata, 8);
     Delay_DelayMs(30);
     _i2c_read(tmp_dev_addr, tmp_sub_addr,returndata, 8);
 
-    for(i=0;i<8;i++)
-    {
-        //returndata[i]= i;
-        DEBUG_MSG(("Read=================%d===============> %x\r\n",i, returndata[i]));
-    }
 
     //比较原始数据randata与解密出来的exdata
     for(j=0;j<8;j++)
@@ -166,7 +152,7 @@ void InitEnDecry(ENDE_DEVICE_OBJ *endedeviceobj)
 void _i2c_start(void)
 {
 
-	DEBUG_MSG(("<<=====================_i2c_start=======================>>\r\n"));
+	//DEBUG_MSG(("<<=====================_i2c_start=======================>>\r\n"));
 	SDA_HIGH;
 	I2C_DELAY;
 	I2C_DELAY;
@@ -182,7 +168,7 @@ void _i2c_start(void)
 void _i2c_stop(void)
 {
 	
-	DEBUG_MSG(("<<=====================_i2c_stop=======================>>\r\n"));
+	//DEBUG_MSG(("<<=====================_i2c_stop=======================>>\r\n"));
 	
 	SDA_LOW;
 	I2C_DELAY;
@@ -195,7 +181,7 @@ void _i2c_stop(void)
 unsigned char _i2c_ack_detect(void)
 {
 
-	DEBUG_MSG(("<<=====================_i2c_ack_detect=======================>>\r\n"));
+	//DEBUG_MSG(("<<=====================_i2c_ack_detect=======================>>\r\n"));
 
 	SDA_HIGH;
 	I2C_DELAY;
@@ -207,7 +193,7 @@ unsigned char _i2c_ack_detect(void)
 	if (SDA_DETECT)
 	{
 		SDA_OUT;
-		DEBUG_MSG(("<<=====================Ack Error!=======================>>\r\n"));
+		//DEBUG_MSG(("<<=====================Ack Error!=======================>>\r\n"));
 		return ERROR_CODE_FALSE; // false
 	}
 
@@ -221,7 +207,7 @@ unsigned char _i2c_ack_detect(void)
 void _i2c_ack_send(void)
 {
 
-	DEBUG_MSG(("<<=====================_i2c_ack_send=======================>>\r\n"));
+	//DEBUG_MSG(("<<=====================_i2c_ack_send=======================>>\r\n"));
 
 	SDA_LOW;
 	I2C_DELAY;
@@ -234,7 +220,7 @@ unsigned char _i2c_write_byte(unsigned char data)
 {
 	unsigned char i;
 
-	DEBUG_MSG(("<<=====================_i2c_write_byte=======================>>\r\n"));
+	//DEBUG_MSG(("<<=====================_i2c_write_byte=======================>>\r\n"));
 	I2C_DELAY;
 	for(i = 0; i< 8; i++)
 	{
@@ -249,7 +235,7 @@ unsigned char _i2c_write_byte(unsigned char data)
 
 	if(_i2c_ack_detect())
 	{
-		DEBUG_MSG(("<<=====================Acknoledge Error=======================>>\r\n"));
+		//DEBUG_MSG(("<<=====================Acknoledge Error=======================>>\r\n"));
 		return ERROR_CODE_FALSE;
 	}
 	return ERROR_CODE_TRUE;
@@ -259,7 +245,7 @@ unsigned char _i2c_read_byte(void)
 {
 	unsigned char i, data;
 
-	DEBUG_MSG(("<<=====================_i2c_read_byte=======================>>\r\n"));
+	//DEBUG_MSG(("<<=====================_i2c_read_byte=======================>>\r\n"));
 
 	data = 0;
 	//SDA_HIGH;
@@ -285,24 +271,24 @@ unsigned char _i2c_write(unsigned char device_addr, unsigned char sub_addr, unsi
 {
 	unsigned char i;
 
-	DEBUG_MSG(("<<=====================_i2c_write=======================>>\r\n"));
+	//DEBUG_MSG(("<<=====================_i2c_write=======================>>\r\n"));
 
 	_i2c_start();
 	I2C_DELAY;
 	if(_i2c_write_byte(device_addr)) {
 		_i2c_stop();
-		DEBUG_MSG(("<<=====================Write Error - Addr=======================>>\r\n"));
+		//DEBUG_MSG(("<<=====================Write Error - Addr=======================>>\r\n"));
 		return ERROR_CODE_WRITE_ADDR;
 	}
 	if(_i2c_write_byte(sub_addr)) {
 		_i2c_stop();
-		DEBUG_MSG(("<<=====================Write Error - Addr=======================>>\r\n"));
+		//DEBUG_MSG(("<<=====================Write Error - Addr=======================>>\r\n"));
 		return ERROR_CODE_WRITE_ADDR;
 	}
 	for(i = 0; i<ByteNo; i++) {
 		if(_i2c_write_byte(buff[i])) {
 			_i2c_stop();
-			DEBUG_MSG(("<<=====================Write Error - Data=======================>>\r\n"));
+			//DEBUG_MSG(("<<=====================Write Error - Data=======================>>\r\n"));
 			return ERROR_CODE_WRITE_DATA;
 		}
 	}
@@ -316,25 +302,25 @@ unsigned char _i2c_read(unsigned char device_addr, unsigned char sub_addr, unsig
 {
 	unsigned char i;
 
-	DEBUG_MSG(("<<=====================_i2c_read=======================>>\r\n"));	
+	//DEBUG_MSG(("<<=====================_i2c_read=======================>>\r\n"));	
 	I2C_DELAY_LONG;
 	_i2c_start();
 	I2C_DELAY;
 	if(_i2c_write_byte(device_addr)) {
 		_i2c_stop();
-		DEBUG_MSG(("<<=====================Write Error - Addr=======================>>\r\n"));
+		//DEBUG_MSG(("<<=====================Write Error - Addr=======================>>\r\n"));
 		return ERROR_CODE_READ_ADDR;
 	}
 	if(_i2c_write_byte(sub_addr)) {
 		_i2c_stop();
-		DEBUG_MSG(("<<=====================Write Error - Addr=======================>>\r\n"));
+		//DEBUG_MSG(("<<=====================Write Error - Addr=======================>>\r\n"));
 		return ERROR_CODE_READ_ADDR;
 	}
 	_i2c_start();
 	I2C_DELAY;
 	if(_i2c_write_byte(device_addr+1)) {
 		_i2c_stop();
-		DEBUG_MSG(("<<=====================Write Error - Addr=======================>>\r\n"));
+		//DEBUG_MSG(("<<=====================Write Error - Addr=======================>>\r\n"));
 		return ERROR_CODE_READ_ADDR;
 	}
 	for(i = 0; i<ByteNo; i++) buff[i] = _i2c_read_byte();

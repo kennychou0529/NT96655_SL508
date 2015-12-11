@@ -148,7 +148,7 @@ int mir3da_open_interrupt(int num){
 
 	res = mir3da_register_write(NSA_REG_INTERRUPT_SETTINGS1,0x03);
 	res = mir3da_register_write(NSA_REG_ACTIVE_DURATION,0x01 );// 0x03
-	res = mir3da_register_write(NSA_REG_ACTIVE_THRESHOLD,0x26 );////DEBUG//38//DF
+	res = mir3da_register_write(NSA_REG_ACTIVE_THRESHOLD,0x13);////DEBUG//38//DF
 			
 	switch(num){
 
@@ -303,19 +303,19 @@ static UINT32 GSensor_DA380_GetSensitivityLevel(void)
     switch(g_GSensorSensitivity)
    	{
 		case GSENSOR_SENSITIVITY_OFF:
-			DA380Threshold =32768;
+			DA380Threshold = 32768;
 			break;
 		case GSENSOR_SENSITIVITY_LOW:
-			DA380Threshold =1400;//25
+			DA380Threshold = 400;//25
 			break;
 		case GSENSOR_SENSITIVITY_MED:
-			DA380Threshold =800;//20
+			DA380Threshold = 300;//20
 			break;
 		case GSENSOR_SENSITIVITY_HIGH:
-			DA380Threshold =200;//16
+			DA380Threshold = 160;//16
 			break;
 		default:
-			DA380Threshold =0xFF;
+			DA380Threshold = 0xFF;
 			break;
    	}
 	return DA380Threshold;
@@ -403,6 +403,7 @@ BOOL GSensor_GetData(Gsensor_Data *GS_Data)
        rotate(&rot,&upd,x,y,z);
 	   
 	xyz = GSensor_DA380_GetSensitivityLevel();
+	//debug_msg("abs_x = %d, abs_y = %d, abs_z = %d \r\n",abs(x-prev_x ), abs(y-prev_y ), abs(z-prev_z ));
         if ((abs(x-prev_x )> xyz)||
             (abs(y-prev_y )> xyz)||
             (abs(z-prev_z )> xyz))

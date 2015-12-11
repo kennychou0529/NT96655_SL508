@@ -55,7 +55,6 @@ int SX_TIMER_DET_ACC_ID = -1;
 int SX_TIMER_DET_LED_STATUS_ID = -1;
 int SX_TIMER_DET_GSENSOR_ID = -1;
 int SX_TIMER_WATCHDOG_ID = -1;
-
 void UI_DetAutoSleep(void);
 void UI_DetAutoPoweroff(void);
 void UI_DetBattery(void);
@@ -855,7 +854,7 @@ void UI_DetLEDStatus(void)
 					GxLED_SetCtrl(KEYSCAN_LED_RED,TURNON_LED,FALSE); 
 				}				
 			}		
-			else
+			else 
 			{
 				if(GxLED_IsLEDOn(KEYSCAN_LED_GREEN) == TRUE)
 				{
@@ -865,7 +864,7 @@ void UI_DetLEDStatus(void)
 				if(GxLED_IsLEDOn(KEYSCAN_LED_RED) == FALSE)
 				{
 					GxLED_SetCtrl(KEYSCAN_LED_RED,TURNON_LED,TRUE);   	
-				}				
+				}
 			}			
 		}
 		else
